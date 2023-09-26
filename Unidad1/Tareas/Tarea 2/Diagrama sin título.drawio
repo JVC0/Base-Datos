@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-26T15:14:39.935Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="1atDz2Sr6gHCq0ZeuB95" version="21.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-26T15:26:08.994Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="2zcQ9RK2vDQxO8iseUBR" version="21.8.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1434" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -42,6 +42,18 @@
             <mxPoint x="400" y="350" as="sourcePoint" />
             <mxPoint x="450" y="300" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Mm4QAAfR15i9iaknWD1--11" value="&lt;div&gt;Numero de cliente&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry x="400" y="410" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mm4QAAfR15i9iaknWD1--12" value="&lt;div&gt;Saldo&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="620" y="410" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mm4QAAfR15i9iaknWD1--13" value="Direcciones de envio" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="510" y="410" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mm4QAAfR15i9iaknWD1--14" value="Limite de credito" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="730" y="410" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
