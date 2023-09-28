@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-28T18:57:04.226Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="hvhKPbaAR-krNWOyZMHW" version="21.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-28T18:58:03.904Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="KwSzJMlAFC0RvV4kDxOZ" version="21.8.2" type="github">
   <diagram name="Página-1" id="3oa3MwjMkdHVgVlA6YHd">
     <mxGraphModel dx="2261" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -69,6 +69,9 @@
         </mxCell>
         <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-21" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="727" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-23" value="Curso" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="770" y="360" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
