@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-28T19:02:47.264Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="AvgzJbcJ5eFzFSGNXbHR" version="21.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-28T19:10:02.858Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="WakN62sVUL-g6iuvxTZL" version="21.8.2" type="github">
   <diagram name="Página-1" id="3oa3MwjMkdHVgVlA6YHd">
     <mxGraphModel dx="2261" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -150,6 +150,24 @@
             <mxPoint x="390" y="360" as="sourcePoint" />
             <mxPoint x="440" y="310" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-40" value="1:N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="75" y="210" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-41" value="1:1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="314" y="210" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-42" value="1:N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="180" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-43" value="1:N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="210" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-44" value="1:n" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="465" y="210" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gf_VAwF5II_Iy1FPS7Cm-45" value="N:M" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="575" y="178" width="50" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
