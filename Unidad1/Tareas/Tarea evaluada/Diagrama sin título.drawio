@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-05T17:19:48.753Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="Mm_DtgVfED3A_nbGpLtg" version="22.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-05T17:24:17.516Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="FLeNY9T6fB5CcpsX1poA" version="22.0.2" type="github">
   <diagram name="Página-1" id="ruGpxDszXY28L82vDE_6">
     <mxGraphModel dx="2514" dy="2104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -248,7 +248,7 @@
         <mxCell id="DRoAYdib-w9aYCAPTFuM-59" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="284" y="-50" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="DRoAYdib-w9aYCAPTFuM-60" value="Descripsion" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="DRoAYdib-w9aYCAPTFuM-60" value="Descripcion" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="384" y="-50" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="J7Z38NdXORSfNptSO40i-1" value="" style="endArrow=none;html=1;rounded=0;exitX=0.41;exitY=-0.025;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="uOCOjJm3G3VWNsgZbyZp-6" target="DRoAYdib-w9aYCAPTFuM-38" edge="1">
