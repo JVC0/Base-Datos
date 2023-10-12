@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-12T19:50:26.817Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="SZ-6M6dpzMbZQa2Rkh-6" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-12T19:50:40.636Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="n9iIcg8dfq00dSDS0uVY" version="22.0.4" type="github">
   <diagram name="Page-1" id="BAuPG-WFAirHTAxfxvM8">
     <mxGraphModel dx="2243" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -420,7 +420,7 @@
             <mxPoint x="800" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="s6MSy0kVretEQHiWO5mq-151" value="se hacen" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="s6MSy0kVretEQHiWO5mq-151" value="registra" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="830" y="160" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-152" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="s6MSy0kVretEQHiWO5mq-5" target="s6MSy0kVretEQHiWO5mq-151">
