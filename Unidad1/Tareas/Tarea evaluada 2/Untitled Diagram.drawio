@@ -1,9 +1,33 @@
-<mxfile host="app.diagrams.net" modified="2023-10-12T16:36:07.461Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" version="22.0.4" etag="5OSXzb2QbBZg2AqTVjTL" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-12T17:01:51.794Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="sYi3x35gqRTDaKuU44uk" version="22.0.4" type="github">
   <diagram name="Page-1" id="BAuPG-WFAirHTAxfxvM8">
-    <mxGraphModel>
+    <mxGraphModel dx="1393" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="s6MSy0kVretEQHiWO5mq-1" value="jugador" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-2" value="Arbitros" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="110" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-3" value="pais" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="250" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-4" value="Hotel" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="490" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-5" value="Partida" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="660" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-6" value="jornadas" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="660" y="480" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-7" value="Salas" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="590" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-8" value="Movimientos" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
