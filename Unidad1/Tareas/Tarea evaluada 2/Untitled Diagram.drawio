@@ -1,47 +1,47 @@
-<mxfile host="app.diagrams.net" modified="2023-10-12T17:06:43.325Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="pY5-lUeYUr8fI9MtEfxb" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-12T17:11:25.277Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="9HCaUIV3oZTlkdyvpr-L" version="22.0.4" type="github">
   <diagram name="Page-1" id="BAuPG-WFAirHTAxfxvM8">
     <mxGraphModel dx="2243" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="s6MSy0kVretEQHiWO5mq-1" value="jugador" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="470" y="400" width="100" height="40" as="geometry" />
+          <mxGeometry x="570" y="400" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-2" value="Arbitros" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="30" y="380" width="100" height="40" as="geometry" />
+          <mxGeometry x="30" y="400" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-3" value="pais" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="250" y="220" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-4" value="Hotel" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="370" y="490" width="100" height="40" as="geometry" />
+          <mxGeometry x="680" y="660" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-5" value="Partida" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="680" y="400" width="100" height="40" as="geometry" />
+          <mxGeometry x="300" y="580" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-6" value="jornadas" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="680" y="500" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-7" value="Salas" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="370" y="590" width="100" height="40" as="geometry" />
+          <mxGeometry x="670" y="740" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-8" value="Movimientos" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="820" y="400" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-9" value="numero de asociado" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-10" value="numero de asociado" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
-          <mxGeometry x="-20" y="420" width="100" height="40" as="geometry" />
+          <mxGeometry x="-110" y="500" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-11" value="Campeonatos participados" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="-140" y="400" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-12" value="Campeonatos participados" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-13" value="Telefono" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-14" value="Telefono" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="-90" y="450" width="100" height="40" as="geometry" />
@@ -50,19 +50,19 @@
           <mxGeometry x="-200" y="450" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-16" value="direccion" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-17" value="nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-18" value="nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="-80" y="360" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-19" value="Nivel" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="270" y="430" width="100" height="40" as="geometry" />
+          <mxGeometry x="-20" y="810" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-20" value="Envian" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="460" y="210" width="120" height="60" as="geometry" />
+          <mxGeometry x="560" y="210" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="s6MSy0kVretEQHiWO5mq-21" value="Envian" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="20" y="210" width="120" height="60" as="geometry" />
@@ -90,6 +90,24 @@
             <mxPoint x="360" y="410" as="sourcePoint" />
             <mxPoint x="410" y="360" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-27" value="Id" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry x="290" y="70" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-28" value="numero de clubes de ajedrez" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="390" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-29" value="nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-30" value="cod_p" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry x="20" y="690" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-31" value="Jugada" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="560" y="570" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s6MSy0kVretEQHiWO5mq-32" value="arbitrada" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="20" y="570" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
