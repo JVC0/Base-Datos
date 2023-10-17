@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-17T10:56:59.416Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="ngrGxTKBI3ZsvAAsgFlV" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-17T11:01:20.817Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="8S6JFgXDNiZPfQUyQnCh" version="22.0.4" type="github">
   <diagram name="Page-1" id="vt7E26coTQ7GBFosNAj3">
     <mxGraphModel dx="1393" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -22,13 +22,13 @@
             <mxPoint x="450" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-9" value="Entity" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-9" value="Humano" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="370" y="240" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-10" value="Entity" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-10" value="Klingon" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="370" y="350" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-11" value="Entity" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-11" value="Vulcano" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="370" y="300" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-12" value="" style="triangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -36,12 +36,6 @@
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-13" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="200" y="305" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-14" value="" style="triangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="590" y="280" width="60" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-15" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="560" y="305" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-16" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="EmvSPIBgGL5C_TIdjesC-9" target="EmvSPIBgGL5C_TIdjesC-12">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -68,6 +62,21 @@
             <mxPoint x="400" y="420" as="sourcePoint" />
             <mxPoint x="450" y="370" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-19" value="Teniente" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="180" y="460" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-20" value="Almirante" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="180" y="510" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-21" value="Capitan" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="340" y="540" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-22" value="Interpreta" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-23" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="285" width="20" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
