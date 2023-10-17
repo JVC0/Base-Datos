@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-17T11:49:19.260Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="gZUHqTGtkRXnahxElamd" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-17T11:49:31.938Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="yVtgSKHI8xbpqfPZnju7" version="22.0.4" type="github">
   <diagram name="Page-1" id="vt7E26coTQ7GBFosNAj3">
     <mxGraphModel dx="2243" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -315,7 +315,7 @@
         <mxCell id="EmvSPIBgGL5C_TIdjesC-86" value="Problema resuelto" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-100" y="460" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-87" value="Con la que&amp;nbsp; se viajo Nave&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-87" value="Con la que&amp;nbsp; se viajo Nave&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-130" y="740" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-88" value="nombre de planeta" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
@@ -348,13 +348,13 @@
             <mxPoint x="140" y="570" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-94" value="Numero de tripulantes" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-94" value="Numero de tripulantes" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-140" y="620" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-95" value="Codigo" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-95" value="Codigo" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-90" y="700" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-96" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-96" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-100" y="660" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-97" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="EmvSPIBgGL5C_TIdjesC-98" target="EmvSPIBgGL5C_TIdjesC-25">
@@ -411,10 +411,10 @@
             <mxPoint x="140" y="570" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-108" value="Numero de nave" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-108" value="Numero de nave" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-150" y="840" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EmvSPIBgGL5C_TIdjesC-109" value="numero entero" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+        <mxCell id="EmvSPIBgGL5C_TIdjesC-109" value="numero entero" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="-170" y="890" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="EmvSPIBgGL5C_TIdjesC-110" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="EmvSPIBgGL5C_TIdjesC-27">
