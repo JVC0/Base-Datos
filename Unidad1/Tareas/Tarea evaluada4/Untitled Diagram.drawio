@@ -1,103 +1,175 @@
-<mxfile host="app.diagrams.net" modified="2023-10-18T17:13:44.435Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="HNwwo0LStmWnBKSWph1b" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-18T17:23:26.639Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="6kaHPCZMqMiwQZwO8XN7" version="22.0.4" type="github">
   <diagram name="Page-1" id="6XxhvuVYkJTTJ2l1wMOv">
-    <mxGraphModel dx="2214" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1364" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="eszdHdopAfw8nN-wgMps-1" value="Empresa" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="20" y="240" width="100" height="40" as="geometry" />
+        <mxCell id="eszdHdopAfw8nN-wgMps-1" value="Empresas" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="160" y="450" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-2" value="Cliente" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="320" y="160" width="100" height="40" as="geometry" />
+          <mxGeometry x="460" y="370" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-3" value="Proveedoras" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="320" y="320" width="100" height="40" as="geometry" />
+          <mxGeometry x="460" y="530" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-4" value="" style="triangle;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="200" y="220" width="60" height="80" as="geometry" />
+          <mxGeometry x="340" y="430" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="170" y="245" width="30" height="30" as="geometry" />
+          <mxGeometry x="310" y="455" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-6" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-4" target="eszdHdopAfw8nN-wgMps-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="480" as="sourcePoint" />
-            <mxPoint x="410" y="430" as="targetPoint" />
+            <mxPoint x="500" y="690" as="sourcePoint" />
+            <mxPoint x="550" y="640" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="230" y="180" />
+              <mxPoint x="370" y="390" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-10" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-3" target="eszdHdopAfw8nN-wgMps-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="480" as="sourcePoint" />
-            <mxPoint x="410" y="430" as="targetPoint" />
+            <mxPoint x="500" y="690" as="sourcePoint" />
+            <mxPoint x="550" y="640" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="230" y="340" />
+              <mxPoint x="370" y="550" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-11" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-5" target="eszdHdopAfw8nN-wgMps-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="480" as="sourcePoint" />
-            <mxPoint x="410" y="430" as="targetPoint" />
+            <mxPoint x="500" y="690" as="sourcePoint" />
+            <mxPoint x="550" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-12" value="NIF" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="-130" y="115" width="100" height="40" as="geometry" />
+          <mxGeometry x="10" y="325" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-13" value="Direccion" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="-80" y="80" width="100" height="40" as="geometry" />
+          <mxGeometry x="60" y="290" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-14" value="Fax" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="135" y="130" width="100" height="40" as="geometry" />
+          <mxGeometry x="275" y="340" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-15" value="&amp;nbsp;Telefono" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="110" y="90" width="100" height="40" as="geometry" />
+          <mxGeometry x="250" y="300" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-16" value="Poblacion" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="20" y="75" width="100" height="40" as="geometry" />
+          <mxGeometry x="160" y="285" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-18" value="" style="endArrow=none;html=1;rounded=0;exitX=0.09;exitY=-0.025;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-1" target="eszdHdopAfw8nN-wgMps-12">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="390" as="sourcePoint" />
-            <mxPoint x="-110" y="220" as="targetPoint" />
+            <mxPoint x="540" y="600" as="sourcePoint" />
+            <mxPoint x="30" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-19" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-1" target="eszdHdopAfw8nN-wgMps-13">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="390" as="sourcePoint" />
-            <mxPoint x="450" y="340" as="targetPoint" />
+            <mxPoint x="540" y="600" as="sourcePoint" />
+            <mxPoint x="590" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-23" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=-0.067;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-24" target="eszdHdopAfw8nN-wgMps-5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="390" as="sourcePoint" />
-            <mxPoint x="450" y="340" as="targetPoint" />
+            <mxPoint x="540" y="600" as="sourcePoint" />
+            <mxPoint x="590" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-24" value="Tipo" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="360" width="50" height="30" as="geometry" />
+          <mxGeometry x="290" y="570" width="50" height="30" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-25" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" vertex="1" parent="1">
-          <mxGeometry x="260" y="155" width="40" height="210" as="geometry" />
+          <mxGeometry x="400" y="365" width="40" height="210" as="geometry" />
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-28" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="eszdHdopAfw8nN-wgMps-16">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="60" y="240" as="sourcePoint" />
-            <mxPoint x="450" y="340" as="targetPoint" />
+            <mxPoint x="200" y="450" as="sourcePoint" />
+            <mxPoint x="590" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-29" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-1" target="eszdHdopAfw8nN-wgMps-15">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="390" as="sourcePoint" />
-            <mxPoint x="450" y="340" as="targetPoint" />
+            <mxPoint x="540" y="600" as="sourcePoint" />
+            <mxPoint x="590" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="eszdHdopAfw8nN-wgMps-30" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-1" target="eszdHdopAfw8nN-wgMps-14">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="390" as="sourcePoint" />
-            <mxPoint x="450" y="340" as="targetPoint" />
+            <mxPoint x="540" y="600" as="sourcePoint" />
+            <mxPoint x="590" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-32" value="Provincia" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="480" y="270" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-33" value="Comunidad&lt;br&gt;autonoma" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-34" value="Portes" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="560" y="310" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-35" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-2" target="eszdHdopAfw8nN-wgMps-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-36" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-2" target="eszdHdopAfw8nN-wgMps-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-37" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-2" target="eszdHdopAfw8nN-wgMps-34">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-38" value="Debidos" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="710" y="250" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-39" value="Pagados" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="620" y="210" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-40" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="eszdHdopAfw8nN-wgMps-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="310" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-41" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-34" target="eszdHdopAfw8nN-wgMps-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-42" value="Pais" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-44" value="Nombre de persona de contacto" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-45" value="CIF" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-47" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-45" target="eszdHdopAfw8nN-wgMps-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-48" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-44" target="eszdHdopAfw8nN-wgMps-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eszdHdopAfw8nN-wgMps-49" value="" style="endArrow=none;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eszdHdopAfw8nN-wgMps-42" target="eszdHdopAfw8nN-wgMps-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="450" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
