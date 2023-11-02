@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-02T20:03:07.069Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="OpkWKRjMbODDO1NXunlc" version="22.0.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-02T20:06:19.630Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="njGbUNe0pX0S4yfXXQQd" version="22.0.8" type="github">
   <diagram name="Page-1" id="klOLATzVOazu2ZO2MSHW">
     <mxGraphModel dx="1364" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -96,7 +96,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-10" value="Numero" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-8">
+        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-10" value="Numero de asignatura" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-8">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -149,7 +149,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-36" value="&lt;u&gt;Letra de Grupo&lt;/u&gt;" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-34">
+        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-36" value="Letra de Grupo" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-34">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -215,7 +215,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-121" value="UniqueID" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=0;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-119">
+        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-121" value="Numero de aula" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=0;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-119">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -307,7 +307,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-83" value="ID Asignaturas" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-81">
+        <mxCell id="4rMpqyuq-Y3Nx8-3l62x-83" value="&lt;u&gt;ID Asignaturas&lt;/u&gt;" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1" parent="4rMpqyuq-Y3Nx8-3l62x-81">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
