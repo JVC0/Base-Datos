@@ -311,6 +311,10 @@ DELETE FROM Ejemplo WHERE decimal<50;
 ### Actualiza el campo fecha de todas las entradas a la fecha actual.
 
 ```sql
+ UPDATE Ejemplo set fecha=current_date;
+```
+
+```sql
  +----+------------+--------+---------+------------+----------+
 | id |   texto    | entero | decimal |   fecha    | booleano |
 +----+------------+--------+---------+------------+----------+
