@@ -231,7 +231,7 @@ SELECT marca,modelo FROM vehiculos;
 +------------+------------+
 |   marca    |   modelo   |
 +------------+------------+
-| Ford       | Fiesta     |
+| Renault    | Fiesta     |
 | Toyota     | Corolla    |
 | Nissan     | Sentra     |
 | Chevrolet  | Spark      |
@@ -278,7 +278,7 @@ SELECT * FROM vehiculos WHERE anio="2019";
 +----+------------+--------+------+----------------+
 | id |   marca    | modelo | anio | id_propietario |
 +----+------------+--------+------+----------------+
-| 1  | Ford       | Fiesta | 2019 | 1              |
+| 1  | Renault    | Fiesta | 2019 | 1              |
 | 8  | Volkswagen | RAV4   | 2019 | 8              |
 | 11 | Chevrolet  | Malibu | 2019 | 11             |
 | 16 | Volkswagen | Jetta  | 2019 | 16             |
@@ -385,7 +385,7 @@ UPDATE Vehiculos set anio="2022" WHERE id="3";
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
-| 1  | Ford       | Fiesta     | 2019 | 1              |
+| 1  | Renault    | Fiesta     | 2019 | 1              |
 | 2  | Toyota     | Corolla    | 2018 | 2              |
 | 3  | Nissan     | Sentra     | 2022 | 3              |
 | 4  | Chevrolet  | Spark      | 2017 | 4              |
@@ -419,7 +419,7 @@ UPDATE Vehiculos set modelo="Micra" WHERE modelo="Nissan";
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
-| 1  | Ford       | Fiesta     | 2019 | 1              |
+| 1  | Renault    | Fiesta     | 2019 | 1              |
 | 2  | Toyota     | Corolla    | 2018 | 2              |
 | 3  | Nissan     | Sentra     | 2022 | 3              |
 | 4  | Chevrolet  | Spark      | 2017 | 4              |
@@ -487,7 +487,7 @@ UPDATE Vehiculos set modelo="Renault" WHERE modelo="Fiesta";
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
-| 1  | Ford       | Renault    | 2019 | 1              |
+| 1  | Renault    | Renault    | 2019 | 1              |
 | 2  | Toyota     | Corolla    | 2018 | 2              |
 | 3  | Nissan     | Sentra     | 2022 | 3              |
 | 4  | Chevrolet  | Spark      | 2017 | 4              |
