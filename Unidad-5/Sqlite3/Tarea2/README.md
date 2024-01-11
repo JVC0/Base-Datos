@@ -1,7 +1,9 @@
 # Tarea 2
 
 ### Creacion de tabla Propietarios
+
 ```sql
+
 CREATE TABLE Propietarios(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
@@ -9,6 +11,7 @@ CREATE TABLE Propietarios(
     dni TEXT UNIQUE);
 ```
 ### Insercion de informacion al la tabla
+
 ```sql
 INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Juan', 'Perez', '12345678A' );
 INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Maria', 'Lopez', '87654321B' );
@@ -56,6 +59,7 @@ INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Patricia', 'Navarro', 
 +----+----------+-----------+-----------+
 ```
 ### Creacion detabla
+
 ```sql
 CREATE TABLE Vehiculos(
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -63,7 +67,9 @@ CREATE TABLE Vehiculos(
     anio INTEGER NOT NULL, 
     id_propietario integer references Propietarios(id));
 ```
+
 ### Insercion de informacion al la tabla
+
 ```sql
 INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Ford', 'Fiesta', '2019', '1');
 INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Toyota', 'Corolla', '2018', '2');
@@ -115,10 +121,12 @@ INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Nissan', 'M
 ### EJERCICIOS
 
 
-   #### Seleccionar todos los propietarios
+#### Seleccionar todos los propietarios
+
 ```sql 
 SELECT * FROM Propietarios;
 ```
+
 ```sql
 +----+----------+-----------+-----------+
 | id |  nombre  | apellido  |    dni    |
@@ -147,9 +155,11 @@ SELECT * FROM Propietarios;
 ```
 
    #### Listar todos los vehículos. 
+
 ```sql
 SELECT * FROM vehiculos;
 ```
+
 ```sql
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
@@ -178,10 +188,12 @@ SELECT * FROM vehiculos;
 ```
 
   #### Seleccionar solo los nombres y apellidos de los propietarios. 
+
   ```sql
   SELECT nombre,apellido FROM propietarios;
   
   ```
+
   ```sql
 +----+----------+-----------+-----------+
 | id |  nombre  | apellido  |    dni    |
@@ -209,13 +221,12 @@ SELECT * FROM vehiculos;
 +----+----------+-----------+-----------+
 ```
 
-
-
-
 #### Listar todas las marcas y modelos de los vehículos.
+
 ```sql
 SELECT marca,modelo FROM vehiculos;
 ```
+
 ```sql
 +------------+------------+
 |   marca    |   modelo   |
@@ -243,23 +254,40 @@ SELECT marca,modelo FROM vehiculos;
 +------------+------------+
 
 ```
-   Seleccionar solo los propietarios con apellido "Perez".
-   SELECT Propietarios WHERE apellido="Perez";
-   Listar todos los vehículos con año 2019.
+#### Seleccionar solo los propietarios con apellido "Perez".
+
+```sql
+SELECT * FROM Propietarios WHERE apellido="Perez";
+```
+
+```sql
++----+--------+----------+-----------+
+| id | nombre | apellido |    dni    |
++----+--------+----------+-----------+
+| 1  | Juan   | Perez    | 12345678A |
++----+--------+----------+-----------+
+```
+
+#### Listar todos los vehículos con año 2019.
 
 ```sql
 SELECT * FROM vehiculos WHERE anio="2019";
 ```
-```sql
 
-```
-   Seleccionar propietarios que tienen vehículos de la marca "Toyota".
-(SELECT * FROM propietarios WHERE marca="Toyota");
-```sql
+#### Seleccionar propietarios que tienen vehículos de la marca "Toyota".
 
+```sql
+SELECT * FROM Propietarios as p,Vehiculos as v WHERE v.id_propietario = p.id and v.marca="Toyota";
 ```
 ```sql
-
++----+--------+----------+-----------+----+--------+------------+------+----------------+
+| id | nombre | apellido |    dni    | id | marca  |   modelo   | anio | id_propietario |
++----+--------+----------+-----------+----+--------+------------+------+----------------+
+| 2  | Maria  | Lopez    | 87654321B | 2  | Toyota | Corolla    | 2018 | 2              |
+| 7  | Diego  | Sanchez  | 55555555G | 7  | Toyota | Golf       | 2020 | 7              |
+| 12 | Marta  | Diaz     | 10101010L | 12 | Toyota | Camry      | 2020 | 12             |
+| 18 | Clara  | Soto     | 16161616R | 18 | Toyota | Highlander | 2020 | 18             |
++----+--------+----------+-----------+----+--------+------------+------+----------------+
 ```
    Listar vehículos con marca "Ford" y modelo "Fiesta".
 (SELECT * FROM vehiculos WHERE marca="Ford" & modelo="Fiesta");
