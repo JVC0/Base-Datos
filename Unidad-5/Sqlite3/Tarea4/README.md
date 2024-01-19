@@ -1,3 +1,10 @@
+### Modelo E-R
+
+ <img src=./Mr.drawio.png>
+
+ ### Modelo M-R
+
+ <img src=./E-R.drawio.png>
 
 #### Tablas originales
 
