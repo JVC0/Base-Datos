@@ -4,7 +4,7 @@
 
  ### Modelo M-R
 
- <img src=./E-R.drawio.png>
+ <img src=./ER.drawio.png>
 
 #### Tablas originales
 
@@ -473,7 +473,7 @@ select categoria, count(nombre) as cantidad_total from productos group by catego
 #### Encontrar los productos que han sido vendidos en más de una fecha.
 
 ```sql
-
+select p.id, p.nombre, v.fecha from productos as p, ventas as v where p.id = v.id_producto group by p.id having count(distinct fecha) > 1;
 ```
 
 #### Listar los productos cuya categoría comienza con la letra 'L'.
