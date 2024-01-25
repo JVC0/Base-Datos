@@ -397,8 +397,13 @@ SELECT * FROM Pokemon WHERE nivel IN (40, 50, 60);
 ```
 
 ```sql
-SELECT * FROM Pokemon as p, Tipo as t where p.id_tipo=t.id AND p.nombre like '%C' AND t.nombre='Fuego';
-
+SELECT * FROM Pokemon as p, Tipo as t where p.id_tipo=t.id AND p.nombre like 'C%' AND t.nombre='Fuego';
+┌────┬────────────┬─────────┬───────┬────┬────────┐
+│ id │   nombre   │ id_tipo │ nivel │ id │ nombre │
+├────┼────────────┼─────────┼───────┼────┼────────┤
+│ 2  │ Charmander │ 2       │ 12    │ 2  │ Fuego  │
+│ 17 │ Charizard  │ 2       │ 50    │ 2  │ Fuego  │
+└────┴────────────┴─────────┴───────┴────┴────────┘
 ```
 
 ```sql
