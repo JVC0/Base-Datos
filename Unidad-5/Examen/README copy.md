@@ -17,7 +17,7 @@ CREATE TABLE alumno (
 ```
 /**
 Estas sentencias crean dos tablas: clase y alumno. 
-La tabla clase tiene dos columnas: id (clave primaria) y max_alumnos.
+La tabla clase tiene dos columnas: id (clave primaria) y max_alumnos.   
  La tabla alumno tiene cinco columnas: dni (clave primaria), nombre, apellido, nota e id_clase (clave foránea que hace referencia a la tabla clase).
 **/
 
