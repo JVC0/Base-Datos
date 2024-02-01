@@ -73,6 +73,7 @@ SELECT * FROM libro WHERE precio REGEXP '\.[0-9]{2}';
 └────────┴───────────────────────────────────┴──────────┴─────────────────────────────────────────────┴────────┘
 
 	-- Libros cuyos títulos tienen al menos tres palabras.
+SELECT titulo FROM libro WHERE titulo REGEXP '\s{3}+';
 
 ┌────────┬───────────────────────────────────┬──────────┬───────────────────────────┬────────┐
 │ codigo │              titulo               │ autor_id │         editorial         │ precio │
@@ -381,7 +382,7 @@ SELECT titulo from libro where titulo not REGEXP 'Science';
 └───────────────────────────────────┘
 
 	-- Obtener todos los autores cuyo nombre tiene al menos una letra repetida consecutivamente:
-
+SELECT nombre FROM autor WHERE  nombre  REGEXP '[a-zA-Z]{2}';
 	-- Obtener todos los autores cuyo nombre empieza con "M" o termina con "n":
 SELECT nombre  FROM autor where nombre regexp '^[Mm]';
 
