@@ -1,511 +1,587 @@
-# Tarea 2
+### Tabla inicial
+```sql
+qlite> SELECT * from empleados;
+┌────┬───────────┬─────────┬──────────────────┐
+│ id │  nombre   │ salario │   departamento   │
+├────┼───────────┼─────────┼──────────────────┤
+│ 1  │ Juan      │ 50000.0 │ Ventas           │
+│ 2  │ María     │ 60000.0 │ TI               │
+│ 3  │ Carlos    │ 55000.0 │ Ventas           │
+│ 4  │ Ana       │ 48000.0 │ Recursos Humanos │
+│ 5  │ Pedro     │ 70000.0 │ TI               │
+│ 6  │ Laura     │ 52000.0 │ Ventas           │
+│ 7  │ Javier    │ 48000.0 │ Recursos Humanos │
+│ 8  │ Carmen    │ 65000.0 │ TI               │
+│ 9  │ Miguel    │ 51000.0 │ Ventas           │
+│ 10 │ Elena     │ 55000.0 │ Recursos Humanos │
+│ 11 │ Diego     │ 72000.0 │ TI               │
+│ 12 │ Sofía     │ 49000.0 │ Ventas           │
+│ 13 │ Andrés    │ 60000.0 │ Recursos Humanos │
+│ 14 │ Isabel    │ 53000.0 │ TI               │
+│ 15 │ Raúl      │ 68000.0 │ Ventas           │
+│ 16 │ Patricia  │ 47000.0 │ Recursos Humanos │
+│ 17 │ Alejandro │ 71000.0 │ TI               │
+│ 18 │ Natalia   │ 54000.0 │ Ventas           │
+│ 19 │ Roberto   │ 49000.0 │ Recursos Humanos │
+│ 20 │ Beatriz   │ 63000.0 │ TI               │
+└────┴───────────┴─────────┴──────────────────┘
+```
 
-### Creacion de tabla Propietarios
+
+# Funciones UPPER y LOWER:
+#### Muestra el nombre de todos los empleados en mayúsculas.
 
 ```sql
-
-CREATE TABLE Propietarios(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL,
-    apellido TEXT NOT NULL,
-    dni TEXT UNIQUE);
+SELECT UPPER(nombre) AS nombre_mayusculas, LOWER(nombre) AS nombre_minusculas FROM empleados;
+┌───────────────────┬───────────────────┐
+│ nombre_mayusculas │ nombre_minusculas │
+├───────────────────┼───────────────────┤
+│ JUAN              │ juan              │
+│ MARíA             │ maría             │
+│ CARLOS            │ carlos            │
+│ ANA               │ ana               │
+│ PEDRO             │ pedro             │
+│ LAURA             │ laura             │
+│ JAVIER            │ javier            │
+│ CARMEN            │ carmen            │
+│ MIGUEL            │ miguel            │
+│ ELENA             │ elena             │
+│ DIEGO             │ diego             │
+│ SOFíA             │ sofía             │
+│ ANDRéS            │ andrés            │
+│ ISABEL            │ isabel            │
+│ RAúL              │ raúl              │
+│ PATRICIA          │ patricia          │
+│ ALEJANDRO         │ alejandro         │
+│ NATALIA           │ natalia           │
+│ ROBERTO           │ roberto           │
+│ BEATRIZ           │ beatriz           │
+└───────────────────┴───────────────────┘
 ```
-### Insercion de informacion al la tabla
+
+# Funciones Numéricas:
+
+#### Calcula el valor absoluto del salario de todos los empleados.
+```sql
+SELECT nombre, ABS(salario) AS valor_absoluto FROM empleados;
+┌───────────┬────────────────┐
+│  nombre   │ valor_absoluto │
+├───────────┼────────────────┤
+│ Juan      │ 50000.0        │
+│ María     │ 60000.0        │
+│ Carlos    │ 55000.0        │
+│ Ana       │ 48000.0        │
+│ Pedro     │ 70000.0        │
+│ Laura     │ 52000.0        │
+│ Javier    │ 48000.0        │
+│ Carmen    │ 65000.0        │
+│ Miguel    │ 51000.0        │
+│ Elena     │ 55000.0        │
+│ Diego     │ 72000.0        │
+│ Sofía     │ 49000.0        │
+│ Andrés    │ 60000.0        │
+│ Isabel    │ 53000.0        │
+│ Raúl      │ 68000.0        │
+│ Patricia  │ 47000.0        │
+│ Alejandro │ 71000.0        │
+│ Natalia   │ 54000.0        │
+│ Roberto   │ 49000.0        │
+│ Beatriz   │ 63000.0        │
+└───────────┴────────────────┘
+```
+
+# Funciones de Fecha y Hora:
+#### Muestra la fecha actual.
 
 ```sql
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Juan', 'Perez', '12345678A' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Maria', 'Lopez', '87654321B' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Carlos', 'Ruiz', '11111111C' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Laura', 'Gomez', '22222222D' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Pedro', 'Martinez', '33333333E' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Ana', 'Fernandez', '44444444F' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Diego', 'Sanchez', '55555555G' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Sofia', 'Torres', '66666666H' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Javier', 'Leon', '77777777I' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Lucia', 'Castillo', '88888888J' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Luis', 'Gonzalez', '99999999K' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Marta', 'Diaz', '10101010L' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Victor', 'Vargas', '11111112M' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Elena', 'Castro', '12121212N' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Roberto', 'Blanco', '13131313O' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Natalia', 'Paredes', '14141414P' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Fernando', 'Herrera', '15151515Q' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Clara', 'Soto', '16161616R' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Sergio', 'Mendoza', '17171717S' );
-INSERT INTO Propietarios (nombre, apellido, dni) VALUES ('Patricia', 'Navarro', '18181818T' );
-+----+----------+-----------+-----------+
-| id |  nombre  | apellido  |    dni    |
-+----+----------+-----------+-----------+
-| 1  | Juan     | Perez     | 12345678A |
-| 2  | Maria    | Lopez     | 87654321B |
-| 3  | Carlos   | Ruiz      | 11111111C |
-| 4  | Laura    | Gomez     | 22222222D |
-| 5  | Pedro    | Martinez  | 33333333E |
-| 6  | Ana      | Fernandez | 44444444F |
-| 7  | Diego    | Sanchez   | 55555555G |
-| 8  | Sofia    | Torres    | 66666666H |
-| 9  | Javier   | Leon      | 77777777I |
-| 10 | Lucia    | Castillo  | 88888888J |
-| 11 | Luis     | Gonzalez  | 99999999K |
-| 12 | Marta    | Diaz      | 10101010L |
-| 13 | Victor   | Vargas    | 11111112M |
-| 14 | Elena    | Castro    | 12121212N |
-| 15 | Roberto  | Blanco    | 13131313O |
-| 16 | Natalia  | Paredes   | 14141414P |
-| 17 | Fernando | Herrera   | 15151515Q |
-| 18 | Clara    | Soto      | 16161616R |
-| 19 | Sergio   | Mendoza   | 17171717S |
-| 20 | Patricia | Navarro   | 18181818T |
-+----+----------+-----------+-----------+
+SELECT CURRENT_DATE AS fecha_actual FROM empleados LIMIT 1;
+┌──────────────┐
+│ fecha_actual │
+├──────────────┤
+│ 2024-01-17   │
+└──────────────┘
 ```
-### Creacion detabla
+
+# Funciones de Agregación:
+#### Calcula el promedio de salarios de todos los empleados.
 
 ```sql
-CREATE TABLE Vehiculos(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    marca TEXT NOT NULL, modelo TEXT NOT NULL, 
-    anio INTEGER NOT NULL, 
-    id_propietario integer references Propietarios(id));
+SELECT AVG(salario) AS promedio_salario FROM empleados;
+┌──────────────────┐
+│ promedio_salario │
+├──────────────────┤
+│ 57000.0          │
+└──────────────────┘
 ```
 
-### Insercion de informacion al la tabla
+#### Convierte la cadena '123' a un valor entero.
+
+SELECT nombre, CAST(salario AS INTEGER) AS salario_entero FROM empleados;
+```sql
+┌───────────┬────────────────┐
+│  nombre   │ salario_entero │
+├───────────┼────────────────┤
+│ Juan      │ 50000          │
+│ María     │ 60000          │
+│ Carlos    │ 55000          │
+│ Ana       │ 48000          │
+│ Pedro     │ 70000          │
+│ Laura     │ 52000          │
+│ Javier    │ 48000          │
+│ Carmen    │ 65000          │
+│ Miguel    │ 51000          │
+│ Elena     │ 55000          │
+│ Diego     │ 72000          │
+│ Sofía     │ 49000          │
+│ Andrés    │ 60000          │
+│ Isabel    │ 53000          │
+│ Raúl      │ 68000          │
+│ Patricia  │ 47000          │
+│ Alejandro │ 71000          │
+│ Natalia   │ 54000          │
+│ Roberto   │ 49000          │
+│ Beatriz   │ 63000          │
+└───────────┴────────────────┘
+
+```
+# Funciones de Manipulación de Cadenas:
+#### Concatena el nombre y el departamento de cada empleado.
 
 ```sql
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Ford', 'Fiesta', '2019', '1');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Toyota', 'Corolla', '2018', '2');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Nissan', 'Sentra', '2020', '3');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Chevrolet', 'Spark', '2017', '4');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Honda', 'Civic', '2016', '5');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Ford', 'Mustang', '2021', '6');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Toyota', 'Golf', '2020', '7');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Volkswagen', 'RAV4', '2019', '8');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Honda', 'CR-V', '2018', '9');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Nissan', 'Altima', '2017', '10');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Chevrolet', 'Malibu', '2019', '11');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Toyota', 'Camry', '2020', '12');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Honda', 'Accord', '2018', '13');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Ford', 'Explorer', '2021', '14');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Nissan', 'Rogue', '2017', '15');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Volkswagen', 'Jetta', '2019', '16');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Chevrolet', 'Equinox', '2018', '17');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Toyota', 'Highlander', '2020', '18');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Honda', 'Odyssey', '2016', '19');
-INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES ('Nissan', 'Murano', '2019', '20');
-+----+------------+------------+------+----------------+
-| id |   marca    |   modelo   | anio | id_propietario |
-+----+------------+------------+------+----------------+
-| 1  | Ford       | Fiesta     | 2019 | 1              |
-| 2  | Toyota     | Corolla    | 2018 | 2              |
-| 3  | Nissan     | Sentra     | 2020 | 3              |
-| 4  | Chevrolet  | Spark      | 2017 | 4              |
-| 5  | Honda      | Civic      | 2016 | 5              |
-| 6  | Ford       | Mustang    | 2021 | 6              |
-| 7  | Toyota     | Golf       | 2020 | 7              |
-| 8  | Volkswagen | RAV4       | 2019 | 8              |
-| 9  | Honda      | CR-V       | 2018 | 9              |
-| 10 | Nissan     | Altima     | 2017 | 10             |
-| 11 | Chevrolet  | Malibu     | 2019 | 11             |
-| 12 | Toyota     | Camry      | 2020 | 12             |
-| 13 | Honda      | Accord     | 2018 | 13             |
-| 14 | Ford       | Explorer   | 2021 | 14             |
-| 15 | Nissan     | Rogue      | 2017 | 15             |
-| 16 | Volkswagen | Jetta      | 2019 | 16             |
-| 17 | Chevrolet  | Equinox    | 2018 | 17             |
-| 18 | Toyota     | Highlander | 2020 | 18             |
-| 19 | Honda      | Odyssey    | 2016 | 19             |
-| 20 | Nissan     | Murano     | 2019 | 20             |
-+----+------------+------------+------+----------------+
-
+SELECT nombre|| " " || departamento As nombre_y_departamento FROM empleados;
+┌───────────────────────────┐
+│   nombre_y_departamento   │
+├───────────────────────────┤
+│ Juan Ventas               │
+│ María TI                  │
+│ Carlos Ventas             │
+│ Ana Recursos Humanos      │
+│ Pedro TI                  │
+│ Laura Ventas              │
+│ Javier Recursos Humanos   │
+│ Carmen TI                 │
+│ Miguel Ventas             │
+│ Elena Recursos Humanos    │
+│ Diego TI                  │
+│ Sofía Ventas              │
+│ Andrés Recursos Humanos   │
+│ Isabel TI                 │
+│ Raúl Ventas               │
+│ Patricia Recursos Humanos │
+│ Alejandro TI              │
+│ Natalia Ventas            │
+│ Roberto Recursos Humanos  │
+│ Beatriz TI                │
+└───────────────────────────┘
 ```
 
-### EJERCICIOS
-
-
-#### Seleccionar todos los propietarios
-
-```sql 
-SELECT * FROM Propietarios;
-```
+# Funciones de Manipulación de Cadenas:
+#### Concatena el nombre y el departamento de cada empleado con un guion como separador.
 
 ```sql
-+----+----------+-----------+-----------+
-| id |  nombre  | apellido  |    dni    |
-+----+----------+-----------+-----------+
-| 1  | Juan     | Perez     | 12345678A |
-| 2  | Maria    | Lopez     | 87654321B |
-| 3  | Carlos   | Ruiz      | 11111111C |
-| 4  | Laura    | Gomez     | 22222222D |
-| 5  | Pedro    | Martinez  | 33333333E |
-| 6  | Ana      | Fernandez | 44444444F |
-| 7  | Diego    | Sanchez   | 55555555G |
-| 8  | Sofia    | Torres    | 66666666H |
-| 9  | Javier   | Leon      | 77777777I |
-| 10 | Lucia    | Castillo  | 88888888J |
-| 11 | Luis     | Gonzalez  | 99999999K |
-| 12 | Marta    | Diaz      | 10101010L |
-| 13 | Victor   | Vargas    | 11111112M |
-| 14 | Elena    | Castro    | 12121212N |
-| 15 | Roberto  | Blanco    | 13131313O |
-| 16 | Natalia  | Paredes   | 14141414P |
-| 17 | Fernando | Herrera   | 15151515Q |
-| 18 | Clara    | Soto      | 16161616R |
-| 19 | Sergio   | Mendoza   | 17171717S |
-| 20 | Patricia | Navarro   | 18181818T |
-+----+----------+-----------+-----------+
+SELECT nombre|| "-" || departamento As nombre_y_departamento FROM empleados;
+┌───────────────────────────┐
+│   nombre_y_departamento   │
+├───────────────────────────┤
+│ Juan-Ventas               │
+│ María-TI                  │
+│ Carlos-Ventas             │
+│ Ana-Recursos Humanos      │
+│ Pedro-TI                  │
+│ Laura-Ventas              │
+│ Javier-Recursos Humanos   │
+│ Carmen-TI                 │
+│ Miguel-Ventas             │
+│ Elena-Recursos Humanos    │
+│ Diego-TI                  │
+│ Sofía-Ventas              │
+│ Andrés-Recursos Humanos   │
+│ Isabel-TI                 │
+│ Raúl-Ventas               │
+│ Patricia-Recursos Humanos │
+│ Alejandro-TI              │
+│ Natalia-Ventas            │
+│ Roberto-Recursos Humanos  │
+│ Beatriz-TI                │
+└───────────────────────────┘
 ```
 
-   #### Listar todos los vehículos. 
+# Funciones de Control de Flujo (CASE):
+#### Categoriza a los empleados según sus salarios.
 
 ```sql
-SELECT * FROM vehiculos;
+Funciones de Agregación (SUM):
+SELECT nombre,CASE WHEN salario > 50000 THEN 'Alto' ELSE 'Bajo' END AS rango_salario FROM empleados;
+┌───────────┬───────────────┐
+│  nombre   │ rango_salario │
+├───────────┼───────────────┤
+│ Juan      │ Bajo          │
+│ María     │ Alto          │
+│ Carlos    │ Alto          │
+│ Ana       │ Bajo          │
+│ Pedro     │ Alto          │
+│ Laura     │ Alto          │
+│ Javier    │ Bajo          │
+│ Carmen    │ Alto          │
+│ Miguel    │ Alto          │
+│ Elena     │ Alto          │
+│ Diego     │ Alto          │
+│ Sofía     │ Bajo          │
+│ Andrés    │ Alto          │
+│ Isabel    │ Alto          │
+│ Raúl      │ Alto          │
+│ Patricia  │ Bajo          │
+│ Alejandro │ Alto          │
+│ Natalia   │ Alto          │
+│ Roberto   │ Bajo          │
+│ Beatriz   │ Alto          │
+└───────────┴───────────────┘
 ```
+
+#### Calcula la suma total de salarios de todos los empleados.
+#### Funciones Numéricas (ROUND):
 
 ```sql
-+----+------------+------------+------+----------------+
-| id |   marca    |   modelo   | anio | id_propietario |
-+----+------------+------------+------+----------------+
-| 1  | Ford       | Fiesta     | 2019 | 1              |
-| 2  | Toyota     | Corolla    | 2018 | 2              |
-| 3  | Nissan     | Sentra     | 2020 | 3              |
-| 4  | Chevrolet  | Spark      | 2017 | 4              |
-| 5  | Honda      | Civic      | 2016 | 5              |
-| 6  | Ford       | Mustang    | 2021 | 6              |
-| 7  | Toyota     | Golf       | 2020 | 7              |
-| 8  | Volkswagen | RAV4       | 2019 | 8              |
-| 9  | Honda      | CR-V       | 2018 | 9              |
-| 10 | Nissan     | Altima     | 2017 | 10             |
-| 11 | Chevrolet  | Malibu     | 2019 | 11             |
-| 12 | Toyota     | Camry      | 2020 | 12             |
-| 13 | Honda      | Accord     | 2018 | 13             |
-| 14 | Ford       | Explorer   | 2021 | 14             |
-| 15 | Nissan     | Rogue      | 2017 | 15             |
-| 16 | Volkswagen | Jetta      | 2019 | 16             |
-| 17 | Chevrolet  | Equinox    | 2018 | 17             |
-| 18 | Toyota     | Highlander | 2020 | 18             |
-| 19 | Honda      | Odyssey    | 2016 | 19             |
-| 20 | Nissan     | Murano     | 2019 | 20             |
-+----+------------+------------+------+----------------+
+SELECT SUM(salario) AS suma_salario FROM empleados;
+┌──────────────┐
+│ suma_salario │
+├──────────────┤
+│ 1140000.0    │
+└──────────────┘
 ```
 
-  #### Seleccionar solo los nombres y apellidos de los propietarios. 
-
-  ```sql
-  SELECT nombre,apellido FROM propietarios;
-  
-  ```
-
-  ```sql
-+----+----------+-----------+-----------+
-| id |  nombre  | apellido  |    dni    |
-+----+----------+-----------+-----------+
-| 1  | Juan     | Perez     | 12345678A |
-| 2  | Maria    | Lopez     | 87654321B |
-| 3  | Carlos   | Ruiz      | 11111111C |
-| 4  | Laura    | Gomez     | 22222222D |
-| 5  | Pedro    | Martinez  | 33333333E |
-| 6  | Ana      | Fernandez | 44444444F |
-| 7  | Diego    | Sanchez   | 55555555G |
-| 8  | Sofia    | Torres    | 66666666H |
-| 9  | Javier   | Leon      | 77777777I |
-| 10 | Lucia    | Castillo  | 88888888J |
-| 11 | Luis     | Gonzalez  | 99999999K |
-| 12 | Marta    | Diaz      | 10101010L |
-| 13 | Victor   | Vargas    | 11111112M |
-| 14 | Elena    | Castro    | 12121212N |
-| 15 | Roberto  | Blanco    | 13131313O |
-| 16 | Natalia  | Paredes   | 14141414P |
-| 17 | Fernando | Herrera   | 15151515Q |
-| 18 | Clara    | Soto      | 16161616R |
-| 19 | Sergio   | Mendoza   | 17171717S |
-| 20 | Patricia | Navarro   | 18181818T |
-+----+----------+-----------+-----------+
-```
-
-#### Listar todas las marcas y modelos de los vehículos.
+#### Redondea el salario de todos los empleados a dos decimales.
 
 ```sql
-SELECT marca,modelo FROM vehiculos;
+SELECT nombre, ROUND(salario, 2) AS salario_redondeado FROM empleados;
+
+┌───────────┬────────────────────┐
+│  nombre   │ salario_redondeado │
+├───────────┼────────────────────┤
+│ Juan      │ 50000.0            │
+│ María     │ 60000.0            │
+│ Carlos    │ 55000.0            │
+│ Ana       │ 48000.0            │
+│ Pedro     │ 70000.0            │
+│ Laura     │ 52000.0            │
+│ Javier    │ 48000.0            │
+│ Carmen    │ 65000.0            │
+│ Miguel    │ 51000.0            │
+│ Elena     │ 55000.0            │
+│ Diego     │ 72000.0            │
+│ Sofía     │ 49000.0            │
+│ Andrés    │ 60000.0            │
+│ Isabel    │ 53000.0            │
+│ Raúl      │ 68000.0            │
+│ Patricia  │ 47000.0            │
+│ Alejandro │ 71000.0            │
+│ Natalia   │ 54000.0            │
+│ Roberto   │ 49000.0            │
+│ Beatriz   │ 63000.0            │
+└───────────┴────────────────────┘
 ```
 
-```sql
-+------------+------------+
-|   marca    |   modelo   |
-+------------+------------+
-| Renault    | Fiesta     |
-| Toyota     | Corolla    |
-| Nissan     | Sentra     |
-| Chevrolet  | Spark      |
-| Honda      | Civic      |
-| Ford       | Mustang    |
-| Toyota     | Golf       |
-| Volkswagen | RAV4       |
-| Honda      | CR-V       |
-| Nissan     | Altima     |
-| Chevrolet  | Malibu     |
-| Toyota     | Camry      |
-| Honda      | Accord     |
-| Ford       | Explorer   |
-| Nissan     | Rogue      |
-| Volkswagen | Jetta      |
-| Chevrolet  | Equinox    |
-| Toyota     | Highlander |
-| Honda      | Odyssey    |
-| Nissan     | Murano     |
-+------------+------------+
-
-```
-#### Seleccionar solo los propietarios con apellido "Perez".
+# Funciones de Manipulación de Cadenas (LENGTH):
+#### Muestra la longitud de cada nombre de empleado.
 
 ```sql
-SELECT * FROM Propietarios WHERE apellido="Perez";
+SELECT nombre, LENGTH(nombre) as long_nombre from empleados;
+┌───────────┬─────────────┐
+│  nombre   │ long_nombre │
+├───────────┼─────────────┤
+│ Juan      │ 4           │
+│ María     │ 5           │
+│ Carlos    │ 6           │
+│ Ana       │ 3           │
+│ Pedro     │ 5           │
+│ Laura     │ 5           │
+│ Javier    │ 6           │
+│ Carmen    │ 6           │
+│ Miguel    │ 6           │
+│ Elena     │ 5           │
+│ Diego     │ 5           │
+│ Sofía     │ 5           │
+│ Andrés    │ 6           │
+│ Isabel    │ 6           │
+│ Raúl      │ 4           │
+│ Patricia  │ 8           │
+│ Alejandro │ 9           │
+│ Natalia   │ 7           │
+│ Roberto   │ 7           │
+│ Beatriz   │ 7           │
+└───────────┴─────────────┘
 ```
 
+# Funciones de Agregación (COUNT):
+#### Cuenta el número total de empleados en cada departamento.
+
 ```sql
-+----+--------+----------+-----------+
-| id | nombre | apellido |    dni    |
-+----+--------+----------+-----------+
-| 1  | Juan   | Perez    | 12345678A |
-+----+--------+----------+-----------+
+select departamento,count(*)
+  from empleados group by departamento;
+┌──────────────────┬──────────┐
+│   departamento   │ count(*) │
+├──────────────────┼──────────┤
+│ Recursos Humanos │ 6        │
+│ TI               │ 7        │
+│ Ventas           │ 7        │
+└──────────────────┴──────────┘
 ```
 
-#### Listar todos los vehículos con año 2019.
+# Funciones de Fecha y Hora (CURRENT_TIME):
+#### Muestra la hora actual.
 
 ```sql
-SELECT * FROM vehiculos WHERE anio="2019";
+SELECT CURRENT_TIME from empleados LIMIT 1;
+┌──────────────┐
+│ CURRENT_TIME │
+├──────────────┤
+│ 21:59:28     │
+└──────────────┘
 ```
 
+# Funciones de Conversión (CAST):
+#### Convierte el salario a un valor de punto flotante.
+
 ```sql
-+----+------------+--------+------+----------------+
-| id |   marca    | modelo | anio | id_propietario |
-+----+------------+--------+------+----------------+
-| 1  | Renault    | Fiesta | 2019 | 1              |
-| 8  | Volkswagen | RAV4   | 2019 | 8              |
-| 11 | Chevrolet  | Malibu | 2019 | 11             |
-| 16 | Volkswagen | Jetta  | 2019 | 16             |
-| 20 | Nissan     | Murano | 2019 | 20             |
-+----+------------+--------+------+----------------+
+ select cast(salario as float) from empleados;
+┌────────────────────────┐
+│ cast(salario as float) │
+├────────────────────────┤
+│ 50000.0                │
+│ 60000.0                │
+│ 55000.0                │
+│ 48000.0                │
+│ 70000.0                │
+│ 52000.0                │
+│ 48000.0                │
+│ 65000.0                │
+│ 51000.0                │
+│ 55000.0                │
+│ 72000.0                │
+│ 49000.0                │
+│ 60000.0                │
+│ 53000.0                │
+│ 68000.0                │
+│ 47000.0                │
+│ 71000.0                │
+│ 54000.0                │
+│ 49000.0                │
+│ 63000.0                │
+└────────────────────────┘
 ```
 
-#### Seleccionar propietarios que tienen vehículos de la marca "Toyota".
+# Funciones de Manipulación de Cadenas (SUBSTR):
+
+#### Muestra los primeros tres caracteres de cada nombre de empleado.
 
 ```sql
-SELECT * FROM Propietarios as p,Vehiculos as v WHERE v.id_propietario = p.id and v.marca="Toyota";
-```
-```sql
-+----+--------+----------+-----------+----+--------+------------+------+----------------+
-| id | nombre | apellido |    dni    | id | marca  |   modelo   | anio | id_propietario |
-+----+--------+----------+-----------+----+--------+------------+------+----------------+
-| 2  | Maria  | Lopez    | 87654321B | 2  | Toyota | Corolla    | 2018 | 2              |
-| 7  | Diego  | Sanchez  | 55555555G | 7  | Toyota | Golf       | 2020 | 7              |
-| 12 | Marta  | Diaz     | 10101010L | 12 | Toyota | Camry      | 2020 | 12             |
-| 18 | Clara  | Soto     | 16161616R | 18 | Toyota | Highlander | 2020 | 18             |
-+----+--------+----------+-----------+----+--------+------------+------+----------------+
-
-```
-
-#### Listar vehículos con marca "Ford" y modelo "Fiesta".
-
-```sql
-SELECT * FROM Vehiculos WHERE marca="Ford" and modelo="Fiesta";
-```
-
-```sql
-+----+-------+--------+------+----------------+
-| id | marca | modelo | anio | id_propietario |
-+----+-------+--------+------+----------------+
-| 1  | Ford  | Fiesta | 2019 | 1              |
-+----+-------+--------+------+----------------+
-```
-
-#### Seleccionar propietarios con DNI "12345678A".
-
-```sql
-SELECT * FROM Propietarios WHERE DNI="12345678A";
-```
-```sql
-+----+--------+----------+-----------+
-| id | nombre | apellido |    dni    |
-+----+--------+----------+-----------+
-| 1  | Juan   | Perez    | 12345678A |
-+----+--------+----------+-----------+
+select substr(nombre, 1,3) as tres_primeras_letras from empleados;
+┌──────────────────────┐
+│ tres_primeras_letras │
+├──────────────────────┤
+│ Jua                  │
+│ Mar                  │
+│ Car                  │
+│ Ana                  │
+│ Ped                  │
+│ Lau                  │
+│ Jav                  │
+│ Car                  │
+│ Mig                  │
+│ Ele                  │
+│ Die                  │
+│ Sof                  │
+│ And                  │
+│ Isa                  │
+│ Raú                  │
+│ Pat                  │
+│ Ale                  │
+│ Nat                  │
+│ Rob                  │
+│ Bea                  │
+└──────────────────────┘
 ```
 
-#### Listar vehículos que pertenecen al propietario con ID 5.
+
+#### Empleados en el departamento de 'Ventas' con salarios superiores a 52000.
 
 ```sql
-SELECT * FROM Vehiculos WHERE id="5";
-```
-```sql
-+----+-------+--------+------+----------------+
-| id | marca | modelo | anio | id_propietario |
-+----+-------+--------+------+----------------+
-| 5  | Honda | Civic  | 2016 | 5              |
-+----+-------+--------+------+----------------+
-```
-
-### Actualizar el nombre de un propietario con DNI "12345678A".
-
-```sql
-UPDATE Propietarios set nombre="Juan" WHERE dni="12345678A";
-```
-```sql
-+----+----------+-----------+-----------+
-| id |  nombre  | apellido  |    dni    |
-+----+----------+-----------+-----------+
-| 1  | Juan     | Perez     | 12345678A |
-| 2  | Maria    | Lopez     | 87654321B |
-| 3  | Carlos   | Ruiz      | 11111111C |
-| 4  | Laura    | Gomez     | 22222222D |
-| 5  | Pedro    | Martinez  | 33333333E |
-| 6  | Ana      | Fernandez | 44444444F |
-| 7  | Diego    | Sanchez   | 55555555G |
-| 8  | Sofia    | Torres    | 66666666H |
-| 9  | Javier   | Leon      | 77777777I |
-| 10 | Lucia    | Castillo  | 88888888J |
-| 11 | Luis     | Gonzalez  | 99999999K |
-| 12 | Marta    | Diaz      | 10101010L |
-| 13 | Victor   | Vargas    | 11111112M |
-| 14 | Elena    | Castro    | 12121212N |
-| 15 | Roberto  | Blanco    | 13131313O |
-| 16 | Natalia  | Paredes   | 14141414P |
-| 17 | Fernando | Herrera   | 15151515Q |
-| 18 | Clara    | Soto      | 16161616R |
-| 19 | Sergio   | Mendoza   | 17171717S |
-| 20 | Patricia | Navarro   | 18181818T |
-+----+----------+-----------+-----------+
-
+SELECT * FROM Empleados WHERE departamento = 'Ventas' AND salario > 52000;
+┌────┬─────────┬─────────┬──────────────┐
+│ id │ nombre  │ salario │ departamento │
+├────┼─────────┼─────────┼──────────────┤
+│ 3  │ Carlos  │ 55000.0 │ Ventas       │
+│ 15 │ Raúl    │ 68000.0 │ Ventas       │
+│ 18 │ Natalia │ 54000.0 │ Ventas       │
+└────┴─────────┴─────────┴──────────────┘
 ```
 
-#### Modificar el año de un vehículo con ID 3 a 2022.
+#### Empleados cuyos nombres contienen la letra 'a' y tienen salarios ordenados de manera ascendente.
 
 ```sql
-UPDATE Vehiculos set anio="2022" WHERE id="3";
-```
-```sql
-+----+------------+------------+------+----------------+
-| id |   marca    |   modelo   | anio | id_propietario |
-+----+------------+------------+------+----------------+
-| 1  | Renault    | Fiesta     | 2019 | 1              |
-| 2  | Toyota     | Corolla    | 2018 | 2              |
-| 3  | Nissan     | Sentra     | 2022 | 3              |
-| 4  | Chevrolet  | Spark      | 2017 | 4              |
-| 5  | Honda      | Civic      | 2016 | 5              |
-| 6  | Ford       | Mustang    | 2021 | 6              |
-| 7  | Toyota     | Golf       | 2020 | 7              |
-| 8  | Volkswagen | RAV4       | 2019 | 8              |
-| 9  | Honda      | CR-V       | 2018 | 9              |
-| 10 | Nissan     | Altima     | 2017 | 10             |
-| 11 | Chevrolet  | Malibu     | 2019 | 11             |
-| 12 | Toyota     | Camry      | 2020 | 12             |
-| 13 | Honda      | Accord     | 2018 | 13             |
-| 14 | Ford       | Explorer   | 2021 | 14             |
-| 15 | Nissan     | Rogue      | 2017 | 15             |
-| 16 | Volkswagen | Jetta      | 2019 | 16             |
-| 17 | Chevrolet  | Equinox    | 2018 | 17             |
-| 18 | Toyota     | Highlander | 2020 | 18             |
-| 19 | Honda      | Odyssey    | 2016 | 19             |
-| 20 | Nissan     | Murano     | 2019 | 20             |
-+----+------------+------------+------+----------------+
-
+ select * from empleados where (nombre like '%a%') order by salario asc;
+┌────┬───────────┬─────────┬──────────────────┐
+│ id │  nombre   │ salario │   departamento   │
+├────┼───────────┼─────────┼──────────────────┤
+│ 16 │ Patricia  │ 47000.0 │ Recursos Humanos │
+│ 4  │ Ana       │ 48000.0 │ Recursos Humanos │
+│ 7  │ Javier    │ 48000.0 │ Recursos Humanos │
+│ 12 │ Sofía     │ 49000.0 │ Ventas           │
+│ 1  │ Juan      │ 50000.0 │ Ventas           │
+│ 6  │ Laura     │ 52000.0 │ Ventas           │
+│ 14 │ Isabel    │ 53000.0 │ TI               │
+│ 18 │ Natalia   │ 54000.0 │ Ventas           │
+│ 3  │ Carlos    │ 55000.0 │ Ventas           │
+│ 10 │ Elena     │ 55000.0 │ Recursos Humanos │
+│ 2  │ María     │ 60000.0 │ TI               │
+│ 13 │ Andrés    │ 60000.0 │ Recursos Humanos │
+│ 20 │ Beatriz   │ 63000.0 │ TI               │
+│ 8  │ Carmen    │ 65000.0 │ TI               │
+│ 15 │ Raúl      │ 68000.0 │ Ventas           │
+│ 17 │ Alejandro │ 71000.0 │ TI               │
+└────┴───────────┴─────────┴──────────────────┘
 ```
 
-#### Cambiar el modelo de todos los vehículos Nissan a "Micra".
-
+#### Empleados en el departamento 'Recursos Humanos' con salarios entre 45000 y 55000.
 
 ```sql
-UPDATE Vehiculos set modelo="Micra" WHERE modelo="Nissan";
-```
-```sql
-+----+------------+------------+------+----------------+
-| id |   marca    |   modelo   | anio | id_propietario |
-+----+------------+------------+------+----------------+
-| 1  | Renault    | Fiesta     | 2019 | 1              |
-| 2  | Toyota     | Corolla    | 2018 | 2              |
-| 3  | Nissan     | Sentra     | 2022 | 3              |
-| 4  | Chevrolet  | Spark      | 2017 | 4              |
-| 5  | Honda      | Civic      | 2016 | 5              |
-| 6  | Ford       | Mustang    | 2021 | 6              |
-| 7  | Toyota     | Golf       | 2020 | 7              |
-| 8  | Volkswagen | RAV4       | 2019 | 8              |
-| 9  | Honda      | CR-V       | 2018 | 9              |
-| 10 | Nissan     | Altima     | 2017 | 10             |
-| 11 | Chevrolet  | Malibu     | 2019 | 11             |
-| 12 | Toyota     | Camry      | 2020 | 12             |
-| 13 | Honda      | Accord     | 2018 | 13             |
-| 14 | Ford       | Explorer   | 2021 | 14             |
-| 15 | Nissan     | Rogue      | 2017 | 15             |
-| 16 | Volkswagen | Jetta      | 2019 | 16             |
-| 17 | Chevrolet  | Equinox    | 2018 | 17             |
-| 18 | Toyota     | Highlander | 2020 | 18             |
-| 19 | Honda      | Odyssey    | 2016 | 19             |
-| 20 | Nissan     | Murano     | 2019 | 20             |
-+----+------------+------------+------+----------------+
-
+select nombre from empleados where departamento = 'Recursos Humanos' and salario between 45000 and 55000 order by salario asc limit 16;
+┌──────────┐
+│  nombre  │
+├──────────┤
+│ Patricia │
+│ Ana      │
+│ Javier   │
+│ Roberto  │
+│ Elena    │
+└──────────┘
 ```
 
-#### Actualizar el apellido de un propietario con ID 7 a "Gomez".
+#### Empleados con salarios en orden descendente, limitando a los primeros 5 resultados.
 
 ```sql
-UPDATE Propietarios set apellido="Gomez" WHERE id="7";
-```
-```sql
-+----+----------+-----------+-----------+
-| id |  nombre  | apellido  |    dni    |
-+----+----------+-----------+-----------+
-| 1  | Juan     | Perez     | 12345678A |
-| 2  | Maria    | Lopez     | 87654321B |
-| 3  | Carlos   | Ruiz      | 11111111C |
-| 4  | Laura    | Gomez     | 22222222D |
-| 5  | Pedro    | Martinez  | 33333333E |
-| 6  | Ana      | Fernandez | 44444444F |
-| 7  | Diego    | Gomez     | 55555555G |
-| 8  | Sofia    | Torres    | 66666666H |
-| 9  | Javier   | Leon      | 77777777I |
-| 10 | Lucia    | Castillo  | 88888888J |
-| 11 | Luis     | Gonzalez  | 99999999K |
-| 12 | Marta    | Diaz      | 10101010L |
-| 13 | Victor   | Vargas    | 11111112M |
-| 14 | Elena    | Castro    | 12121212N |
-| 15 | Roberto  | Blanco    | 13131313O |
-| 16 | Natalia  | Paredes   | 14141414P |
-| 17 | Fernando | Herrera   | 15151515Q |
-| 18 | Clara    | Soto      | 16161616R |
-| 19 | Sergio   | Mendoza   | 17171717S |
-| 20 | Patricia | Navarro   | 18181818T |
-+----+----------+-----------+-----------+
-
+select nombre, salario from empleados order by salario desc limit 5;
+┌───────────┬─────────┐
+│  nombre   │ salario │
+├───────────┼─────────┤
+│ Diego     │ 72000.0 │
+│ Alejandro │ 71000.0 │
+│ Pedro     │ 70000.0 │
+│ Raúl      │ 68000.0 │
+│ Carmen    │ 65000.0 │
+└───────────┴─────────┘
 ```
 
-#### Modificar la marca de un vehículo con modelo "Fiesta" a "Renault".
-
-
+#### Empleados cuyos nombres comienzan con 'M' o 'N' y tienen salarios superiores a 50000.
 
 ```sql
-UPDATE Vehiculos set modelo="Renault" WHERE modelo="Fiesta";
+select nombre from empleados where (nombre like 'M%' or nombre like 'N%') and salario > 50000;
+┌─────────┐
+│ nombre  │
+├─────────┤
+│ María   │
+│ Miguel  │
+│ Natalia │
+└─────────┘
 ```
+
+#### Empleados en el departamento 'TI' o 'Ventas' ordenados alfabéticamente por nombre.
+
 ```sql
-+----+------------+------------+------+----------------+
-| id |   marca    |   modelo   | anio | id_propietario |
-+----+------------+------------+------+----------------+
-| 1  | Renault    | Renault    | 2019 | 1              |
-| 2  | Toyota     | Corolla    | 2018 | 2              |
-| 3  | Nissan     | Sentra     | 2022 | 3              |
-| 4  | Chevrolet  | Spark      | 2017 | 4              |
-| 5  | Honda      | Civic      | 2016 | 5              |
-| 6  | Ford       | Mustang    | 2021 | 6              |
-| 7  | Toyota     | Golf       | 2020 | 7              |
-| 8  | Volkswagen | RAV4       | 2019 | 8              |
-| 9  | Honda      | CR-V       | 2018 | 9              |
-| 10 | Nissan     | Altima     | 2017 | 10             |
-| 11 | Chevrolet  | Malibu     | 2019 | 11             |
-| 12 | Toyota     | Camry      | 2020 | 12             |
-| 13 | Honda      | Accord     | 2018 | 13             |
-| 14 | Ford       | Explorer   | 2021 | 14             |
-| 15 | Nissan     | Rogue      | 2017 | 15             |
-| 16 | Volkswagen | Jetta      | 2019 | 16             |
-| 17 | Chevrolet  | Equinox    | 2018 | 17             |
-| 18 | Toyota     | Highlander | 2020 | 18             |
-| 19 | Honda      | Odyssey    | 2016 | 19             |
-| 20 | Nissan     | Murano     | 2019 | 20             |
-+----+------------+------------+------+----------------+
+select * from empleados where (departamento like 'Ventas' or departamento like 'TI') order by nombre;
+┌────┬───────────┬─────────┬──────────────┐
+│ id │  nombre   │ salario │ departamento │
+├────┼───────────┼─────────┼──────────────┤
+│ 17 │ Alejandro │ 71000.0 │ TI           │
+│ 20 │ Beatriz   │ 63000.0 │ TI           │
+│ 3  │ Carlos    │ 55000.0 │ Ventas       │
+│ 8  │ Carmen    │ 65000.0 │ TI           │
+│ 11 │ Diego     │ 72000.0 │ TI           │
+│ 14 │ Isabel    │ 53000.0 │ TI           │
+│ 1  │ Juan      │ 50000.0 │ Ventas       │
+│ 6  │ Laura     │ 52000.0 │ Ventas       │
+│ 2  │ María     │ 60000.0 │ TI           │
+│ 9  │ Miguel    │ 51000.0 │ Ventas       │
+│ 18 │ Natalia   │ 54000.0 │ Ventas       │
+│ 5  │ Pedro     │ 70000.0 │ TI           │
+│ 15 │ Raúl      │ 68000.0 │ Ventas       │
+│ 12 │ Sofía     │ 49000.0 │ Ventas       │
+└────┴───────────┴─────────┴──────────────┘
+```
+
+#### Empleados con salarios únicos (eliminando duplicados) en orden ascendente.
+
+```sql
+select distinct(salario) from empleados order by salario asc;
+┌─────────┐
+│ salario │
+├─────────┤
+│ 47000.0 │
+│ 48000.0 │
+│ 49000.0 │
+│ 50000.0 │
+│ 51000.0 │
+│ 52000.0 │
+│ 53000.0 │
+│ 54000.0 │
+│ 55000.0 │
+│ 60000.0 │
+│ 63000.0 │
+│ 65000.0 │
+│ 68000.0 │
+│ 70000.0 │
+│ 71000.0 │
+│ 72000.0 │
+└─────────┘
+```
+
+#### Empleados cuyos nombres terminan con 'o' o 'a' y están en el departamento 'Ventas'.
+
+```sql
+select * from empleados where departamento like 'Ventas' and (nombre like '%o' or nombre like '%a');
+
+┌────┬─────────┬─────────┬──────────────┐
+│ id │ nombre  │ salario │ departamento │
+├────┼─────────┼─────────┼──────────────┤
+│ 6  │ Laura   │ 52000.0 │ Ventas       │
+│ 12 │ Sofía   │ 49000.0 │ Ventas       │
+│ 18 │ Natalia │ 54000.0 │ Ventas       │
+└────┴─────────┴─────────┴──────────────┘
+```
+
+#### Empleados con salarios fuera del rango de 55000 a 70000, ordenados por departamento.
+
+```sql
+select * from empleados where salario not between 55000 and 70000 order by departamento;
+┌────┬───────────┬─────────┬──────────────────┐
+│ id │  nombre   │ salario │   departamento   │
+├────┼───────────┼─────────┼──────────────────┤
+│ 4  │ Ana       │ 48000.0 │ Recursos Humanos │
+│ 7  │ Javier    │ 48000.0 │ Recursos Humanos │
+│ 16 │ Patricia  │ 47000.0 │ Recursos Humanos │
+│ 19 │ Roberto   │ 49000.0 │ Recursos Humanos │
+│ 11 │ Diego     │ 72000.0 │ TI               │
+│ 14 │ Isabel    │ 53000.0 │ TI               │
+│ 17 │ Alejandro │ 71000.0 │ TI               │
+│ 1  │ Juan      │ 50000.0 │ Ventas           │
+│ 6  │ Laura     │ 52000.0 │ Ventas           │
+│ 9  │ Miguel    │ 51000.0 │ Ventas           │
+│ 12 │ Sofía     │ 49000.0 │ Ventas           │
+│ 18 │ Natalia   │ 54000.0 │ Ventas           │
+└────┴───────────┴─────────┴──────────────────┘
+```
+
+#### Empleados en el departamento 'Recursos Humanos' con nombres que no contienen la letra 'e'.
+
+```sql
+SELECT *
+FROM empleados
+WHERE departamento LIKE 'Recursos Humanos' AND nombre NOT LIKE '%e%';
+┌────┬──────────┬─────────┬──────────────────┐
+│ id │  nombre  │ salario │   departamento   │
+├────┼──────────┼─────────┼──────────────────┤
+│ 4  │ Ana      │ 48000.0 │ Recursos Humanos │
+│ 13 │ Andrés   │ 60000.0 │ Recursos Humanos │
+│ 16 │ Patricia │ 47000.0 │ Recursos Humanos │
+└────┴──────────┴─────────┴──────────────────┘
 ```
