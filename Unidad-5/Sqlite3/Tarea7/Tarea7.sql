@@ -18,23 +18,60 @@ SELECT  cli.nombre,co.modelo,co.precio FROM clientes as cli , ventas as v , coch
 └─────────────────┴────────────────┴─────────┘
 
 -- Encontrar los clientes que han comprado coches con precios superiores al promedio de todos los coches vendidos.
-  -- Cosas que debo de tener en cuenta:
+  -- Cosas que debo de tener en cuenta:precio, nombre cliene
     -- Precios superiores.
     -- Obtener la media. AVG(precio)
+SELECT cli.nombre,co.precio FROM clientes as cli , ventas as v , coches as co WHERE cli.id_cliente=v.id_cliente and v.id_coche=co.id_coche and precio> (SELECT AVG(precio) FROM coches); 
+┌─────────────────┬─────────┐
+│     nombre      │ precio  │
+├─────────────────┼─────────┤
+│ Carlos López    │ 30000.0 │
+│ Pedro Rodríguez │ 32000.0 │
+│ Isabel Díaz     │ 35000.0 │
+│ Elena Torres    │ 40000.0 │
+└─────────────────┴─────────┘
 
 -- Mostrar los modelos de coches y sus precios que no han sido vendidos aún:
 
-  -- Cosas que debo de tener en cuenta:
+  -- Cosas que debo de tener en cuenta: modelo de coche precio
     -- Coches que han sido vendidos.
     -- Quiero los coches que no han sido vendidos. NOT id_coche IN ventas
+SELECT modelo, precio FROM coches WHERE id_coche not in (SELECT v.id_venta from ventas as v, coches as c WHERE c.id_coche=v.id_coche);   
+┌────────────────┬─────────┐
+│     modelo     │ precio  │
+├────────────────┼─────────┤
+│ Eléctrico 2021 │ 40000.0 │
+└────────────────┴─────────┘
 
+    
 -- Calcular el total gastado por todos los clientes en coches:
   -- Cosas que debo de tener en cuenta:
     -- Me estan pidiendo la suma total de todos los coches vendidos, NO de aquellos que aún no se han vendido.
+SELECT  SUM(co.precio) FROM clientes as cli , ventas as v , coches as co WHERE cli.id_cliente=v.id_cliente and v.id_coche=co.id_coche; 
+┌────────────────┐
+│ SUM(co.precio) │
+├────────────────┤
+│ 259000.0       │
+└────────────────┘
 
 -- Listar los coches vendidos junto con la fecha de venta y el nombre del cliente, ordenados por fecha de venta de forma descendente:
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. ¿Por qué campo tengo que ordenadar. Es uno o más campos?
+SELECT  co.marca,v.fecha_venta,cli.nombre FROM clientes as cli , ventas as v , coches as co WHERE cli.id_cliente=v.id_cliente and v.id_coche=co.id_coche ORDER BY v.fecha_venta DESC; 
+┌────────────┬─────────────┬─────────────────┐
+│   marca    │ fecha_venta │     nombre      │
+├────────────┼─────────────┼─────────────────┤
+│ Tesla      │ 2023-10-05  │ Elena Torres    │
+│ Mazda      │ 2023-08-25  │ Isabel Díaz     │
+│ Hyundai    │ 2023-07-20  │ Miguel González │
+│ Volkswagen │ 2023-06-15  │ Laura Sánchez   │
+│ Nissan     │ 2023-05-05  │ Pedro Rodríguez │
+│ Chevrolet  │ 2023-04-10  │ Ana Martínez    │
+│ Ford       │ 2023-03-25  │ Carlos López    │
+│ Honda      │ 2023-02-20  │ María Gómez     │
+│ Toyota     │ 2023-01-15  │ Juan Pérez      │
+└────────────┴─────────────┴─────────────────┘
+
 
 -- Encontrar el modelo de coche más caro que ha sido reparado al menos una vez.
   -- Cosas que debo de tener en cuenta:
