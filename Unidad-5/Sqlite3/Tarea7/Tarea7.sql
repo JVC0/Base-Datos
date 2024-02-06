@@ -73,14 +73,20 @@ SELECT  co.marca,v.fecha_venta,cli.nombre FROM clientes as cli , ventas as v , c
 └────────────┴─────────────┴─────────────────┘
 
 
--- Encontrar el modelo de coche más caro que ha sido reparado al menos una vez.
+-- Encontrar el modelo de coche más caro.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. MAX
+SELECT *,Max(precio) FROM  coches;
+┌──────────┬────────────────┬───────┬──────┬─────────┬─────────────┐
+│ id_coche │     modelo     │ marca │ año  │ precio  │ Max(precio) │
+├──────────┼────────────────┼───────┼──────┼─────────┼─────────────┤
+│ 10       │ Eléctrico 2021 │ Tesla │ 2021 │ 40000.0 │ 40000.0     │
+└──────────┴────────────────┴───────┴──────┴─────────┴─────────────┘
 
 -- Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. COUNT
-
+SELECT  cli.*,co.modelo,co.precio,Count(v.id_cliente) FROM clientes as cli , ventas as v , coches as co WHERE cli.id_cliente=v.id_cliente and v.id_coche=co.id_coche; 
 -- Encontrar los clientes que han comprado coches de la marca 'Toyota':
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. Like | regexp | =. Tabla normalizada ?.
