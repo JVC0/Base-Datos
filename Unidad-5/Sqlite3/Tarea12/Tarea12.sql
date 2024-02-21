@@ -435,15 +435,57 @@ select c.*,max(p.total) from cliente as c ,pedido as p where c.id = p.id_cliente
 └────┴────────┴───────────┴───────────┴─────────┴───────────┴──────────────┘
 
 --Devuelve la fecha y la cantidad del pedido de menor valor realizado por el cliente Pepe Ruiz Santana.
---
+select c.*,min(p.total) from cliente as c ,pedido as p where c.id = p.id_cliente and c.nombre||' '|| c.apellido1 ||' '|| c.apellido2='Pepe Ruiz Santana'; 
+┌────┬────────┬───────────┬───────────┬────────┬───────────┬──────────────┐
+│ id │ nombre │ apellido1 │ apellido2 │ ciudad │ categoria │ min(p.total) │
+├────┼────────┼───────────┼───────────┼────────┼───────────┼──────────────┤
+│ 8  │ Pepe   │ Ruiz      │ Santana   │ Huelva │ 200       │ 110.5        │
+└────┴────────┴───────────┴───────────┴────────┴───────────┴──────────────┘
+
 --Devuelve un listado con los datos de los clientes y los pedidos, de todos los clientes que han realizado un pedido durante el año 2017 con un valor mayor o igual al valor medio de los pedidos realizados durante ese mismo año.
---
+select c.* from cliente as c ,pedido as p where c.id = p.id_cliente and p.fecha regexp '2017-' and P.total>=(SELECT AVG(pedido.total) FROM pedido WHERE pedido.id_cliente = c.id); 
+┌────┬────────┬───────────┬───────────┬─────────┬───────────┐
+│ id │ nombre │ apellido1 │ apellido2 │ ciudad  │ categoria │
+├────┼────────┼───────────┼───────────┼─────────┼───────────┤
+│ 5  │ Marcos │ Loyola    │ Méndez    │ Almería │ 200       │
+│ 4  │ Adrián │ Suárez    │           │ Jaén    │ 300       │
+│ 2  │ Adela  │ Salas     │ Díaz      │ Granada │ 200       │
+└────┴────────┴───────────┴───────────┴─────────┴───────────┘
+
 Subconsultas con IN y NOT IN
 --Devuelve un listado de los clientes que no han realizado ningún pedido. (Utilizando IN o NOT IN).
---
+SELECT c.nombre FROM cliente AS c WHERE c.id NOT IN (SELECT id_cliente FROM pedido);
+┌───────────┐
+│  nombre   │
+├───────────┤
+│ Guillermo │
+│ Daniel    │
+└───────────┘
+
 --Devuelve un listado de los comerciales que no han realizado ningún pedido. (Utilizando IN o NOT IN).
---
+SELECT c.nombre FROM comercial AS c WHERE c.id NOT IN (SELECT id_cliente FROM pedido);
+
 Subconsultas con EXISTS y NOT EXISTS
 --Devuelve un listado de los clientes que no han realizado ningún pedido. (Utilizando EXISTS o NOT EXISTS).
---
+SELECT c.nombre FROM cliente AS c WHERE EXISTS (SELECT 1 FROM pedido as p WHERE c.id = p.id_cliente);
+┌────────┐
+│ nombre │
+├────────┤
+│ Aarón  │
+│ Adela  │
+│ Adolfo │
+│ Adrián │
+│ Marcos │
+│ María  │
+│ Pilar  │
+│ Pepe   │
+└────────┘
+
 --Devuelve un listado de los comerciales que no han realizado ningún pedido. (Utilizando EXISTS o NOT EXISTS).
+SELECT c.nombre FROM comercial AS c WHERE NOT EXISTS (SELECT 1 FROM pedido as p WHERE c.id = p.id_comercial);
+┌─────────┐
+│ nombre  │
+├─────────┤
+│ Marta   │
+│ Alfredo │
+└─────────┘
