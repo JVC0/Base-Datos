@@ -399,27 +399,51 @@ select substr(fecha, 1, 4)as anyo,count(total) from pedido group by anyo ;
 │ 2016 │ 5            │
 │ 2017 │ 6            │
 │ 2019 │ 3            │
-└──────┴──────────────┘
-
+└──────┴──────────────
 
 Subconsultas
---Con operadores básicos de comparación
+Con operadores básicos de comparación
 --Devuelve un listado con todos los pedidos que ha realizado Adela Salas Díaz. (Sin utilizar INNER JOIN).
---
+select p.*,c.nombre from cliente as c ,pedido as p where c.id = p.id_cliente and c.nombre||' '|| c.apellido1 ||' '|| c.apellido2='Adela Salas Díaz';
+┌────┬────────┬────────────┬────────────┬──────────────┬────────┐
+│ id │ total  │   fecha    │ id_cliente │ id_comercial │ nombre │
+├────┼────────┼────────────┼────────────┼──────────────┼────────┤
+│ 3  │ 65.26  │ 2017-10-05 │ 2          │ 1            │ Adela  │
+│ 7  │ 5760.0 │ 2015-09-10 │ 2          │ 1            │ Adela  │
+│ 12 │ 3045.6 │ 2017-04-25 │ 2          │ 1            │ Adela  │
+└────┴────────┴────────────┴────────────┴──────────────┴────────┘
+
 --Devuelve el número de pedidos en los que ha participado el comercial Daniel Sáez Vega. (Sin utilizar INNER JOIN)
---
+select c.nombre,p.* from comercial as c , pedido as p where c.id=p.id_comercial and c.nombre||' '|| c.apellido1 ||' '|| c.apellido2='Daniel Sáez Vega';
+┌────────┬────┬────────┬────────────┬────────────┬──────────────┐
+│ nombre │ id │ total  │   fecha    │ id_cliente │ id_comercial │
+├────────┼────┼────────┼────────────┼────────────┼──────────────┤
+│ Daniel │ 3  │ 65.26  │ 2017-10-05 │ 2          │ 1            │
+│ Daniel │ 6  │ 2400.6 │ 2016-07-27 │ 7          │ 1            │
+│ Daniel │ 7  │ 5760.0 │ 2015-09-10 │ 2          │ 1            │
+│ Daniel │ 12 │ 3045.6 │ 2017-04-25 │ 2          │ 1            │
+│ Daniel │ 13 │ 545.75 │ 2019-01-25 │ 6          │ 1            │
+│ Daniel │ 14 │ 145.82 │ 2017-02-02 │ 6          │ 1            │
+└────────┴────┴────────┴────────────┴────────────┴──────────────┘
+
 --Devuelve los datos del cliente que realizó el pedido más caro en el año 2019. (Sin utilizar INNER JOIN)
---
+select c.*,max(p.total) from cliente as c ,pedido as p where c.id = p.id_cliente and p.fecha regexp '2019-'; 
+┌────┬────────┬───────────┬───────────┬─────────┬───────────┬──────────────┐
+│ id │ nombre │ apellido1 │ apellido2 │ ciudad  │ categoria │ max(p.total) │
+├────┼────────┼───────────┼───────────┼─────────┼───────────┼──────────────┤
+│ 1  │ Aarón  │ Rivero    │ Gómez     │ Almería │ 100       │ 2389.23      │
+└────┴────────┴───────────┴───────────┴─────────┴───────────┴──────────────┘
+
 --Devuelve la fecha y la cantidad del pedido de menor valor realizado por el cliente Pepe Ruiz Santana.
 --
 --Devuelve un listado con los datos de los clientes y los pedidos, de todos los clientes que han realizado un pedido durante el año 2017 con un valor mayor o igual al valor medio de los pedidos realizados durante ese mismo año.
 --
---Subconsultas con IN y NOT IN
+Subconsultas con IN y NOT IN
 --Devuelve un listado de los clientes que no han realizado ningún pedido. (Utilizando IN o NOT IN).
 --
 --Devuelve un listado de los comerciales que no han realizado ningún pedido. (Utilizando IN o NOT IN).
 --
---Subconsultas con EXISTS y NOT EXISTS
+Subconsultas con EXISTS y NOT EXISTS
 --Devuelve un listado de los clientes que no han realizado ningún pedido. (Utilizando EXISTS o NOT EXISTS).
 --
 --Devuelve un listado de los comerciales que no han realizado ningún pedido. (Utilizando EXISTS o NOT EXISTS).
