@@ -333,9 +333,17 @@ SELECT fecha_pedido FROM  pedido where fecha_pedido not REGEXP '-02-';
 └──────────────┘
 
 Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
+SELECT * FROM  pago where forma_pago="Paypal" and fecha_pago REGEXP '2008-';
 
 Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
-
+SELECT forma_pago FROM  pago GROUP BY forma_pago ;
+┌───────────────┐
+│  forma_pago   │
+├───────────────┤
+│ Cheque        │
+│ PayPal        │
+│ Transferencia │
+└───────────────┘
 Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
 
 Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
