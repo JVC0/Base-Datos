@@ -162,7 +162,7 @@ Consultas multitabla (Where)
 --Devuelve un listado con los nombres de todos los profesores y los departamentos que tienen vinculados. El listado también debe mostrar aquellos profesores que no tienen ningún departamento asociado. El listado debe devolver cuatro columnas, nombre del departamento, primer apellido, segundo apellido y nombre del profesor. El resultado estará ordenado alfabéticamente de menor a mayor por el nombre del departamento, apellidos y el nombre.
 
 --Devuelve un listado con los profesores que no están asociados a un departamento.
-SELECT p.nombre From persona as p , profesor as pro, departamento as d where
+SELECT p.nombre From persona as p , profesor as pro where p.id=pro.id_profesor and id_profesor not in (SELECT id from departamento);
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que no imparten ninguna asignatura.
@@ -198,7 +198,7 @@ Subconsultas
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que tienen un departamento asociado y que no imparten ninguna asignatura.
-
+SELECT p.nombre from persona as p join profesor as pr on p.id=pr.id_profesor join departamento as d on d.id=d.id_departamento where pr.id_profesor not in (SELECT id_profesor from asignatura);
 --Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 
 --Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
