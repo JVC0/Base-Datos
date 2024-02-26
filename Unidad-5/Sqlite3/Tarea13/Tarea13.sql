@@ -130,7 +130,7 @@ SELECT p.nombre,p.apellido1,p.apellido2,d.nombre From profesor as pro join depar
 └───────────┴────────────┴────────────┴────────────────────┘
 
 --Devuelve un listado con el nombre de las asignaturas, año de inicio y año de fin del curso escolar del alumno con nif 26902806M.
-
+SELECT a.nombre 
 --Devuelve un listado con el nombre de todos los departamentos que tienen profesores que imparten alguna asignatura en el Grado en Ingeniería Informática (Plan 2015).
 
 --Devuelve un listado con todos los alumnos que se han matriculado en alguna asignatura durante el curso escolar 2018/2019.
