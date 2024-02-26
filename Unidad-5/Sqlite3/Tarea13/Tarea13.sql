@@ -69,45 +69,65 @@ SELECT * From asignatura Where cuatrimestre=1 and curso=3 and id_grado=7;
 
 Consultas multitabla (Join)
 --Devuelve un listado con los datos de todas las alumnas que se han matriculado alguna vez en el Grado en Ingeniería Informática (Plan 2015).
-SELECT p.* FROM persona as p JOIN alumno_se_matricula_asignatura as m on p.id=m.id_alumno JOIN asignatura as a on a.id=m.id_asignatura join grado as g on g.id=a.id_grado Where g.nombre REGEXP 'Ingeniería Informática' and p.sexo="M"; 
-┌────┬───────────┬────────┬───────────┬───────────┬─────────┬────────────────────┬───────────┬──────────────────┬──────┬────────┐
-│ id │    nif    │ nombre │ apellido1 │ apellido2 │ ciudad  │     direccion      │ telefono  │ fecha_nacimiento │ sexo │  tipo  │
-├────┼───────────┼────────┼───────────┼───────────┼─────────┼────────────────────┼───────────┼──────────────────┼──────┼────────┤
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 24 │ 85135690V │ Sonia  │ Gea       │ Ruiz      │ Almería │ C/ Mercurio        │ 678812017 │ 1995/04/13       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 23 │ 64753215G │ Irene  │ Hernández │ Martínez  │ Almería │ C/ Zapillo         │ 628452384 │ 1996/03/12       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-│ 19 │ 11578526G │ Inma   │ Lakin     │ Yundt     │ Almería │ C/ Picos de Europa │ 678652431 │ 1998/09/01       │ M    │ alumno │
-└────┴───────────┴────────┴───────────┴───────────┴─────────┴────────────────────┴───────────┴──────────────────┴──────┴────────┘
+SELECT DISTINCT p.* FROM persona as p JOIN alumno_se_matricula_asignatura as m on p.id=m.id_alumno JOIN asignatura as a on a.id=m.id_asignatura join grado as g on g.id=a.id_grado Where g.id=7 and p.sexo="M"; 
  
 --Devuelve un listado con todas las asignaturas ofertadas en el Grado en Ingeniería Informática (Plan 2015).
+SELECT a.nombre From grado as g join asignatura as a on g.id=a.id_grado where  g.id=7;
+┌────────────────────────────────────────────────┐
+│                     nombre                     │
+├────────────────────────────────────────────────┤
+│ Biologia celular                               │
+│ Física                                         │
+│ Matemáticas I                                  │
+│ Química general                                │
+│ Química orgánica                               │
+│ Biología vegetal y animal                      │
+│ Bioquímica                                     │
+│ Genética                                       │
+│ Matemáticas II                                 │
+│ Microbiología                                  │
+│ Botánica agrícola                              │
+│ Fisiología vegetal                             │
+│ Genética molecular                             │
+│ Ingeniería bioquímica                          │
+│ Termodinámica y cinética química aplicada      │
+│ Biorreactores                                  │
+│ Biotecnología microbiana                       │
+│ Ingeniería genética                            │
+│ Inmunología                                    │
+│ Virología                                      │
+│ Bases moleculares del desarrollo vegetal       │
+│ Fisiología animal                              │
+│ Metabolismo y biosíntesis de biomoléculas      │
+│ Operaciones de separación                      │
+│ Patología molecular de plantas                 │
+│ Técnicas instrumentales básicas                │
+│ Bioinformática                                 │
+│ Biotecnología de los productos hortofrutículas │
+│ Biotecnología vegetal                          │
+│ Genómica y proteómica                          │
+│ Procesos biotecnológicos                       │
+│ Técnicas instrumentales avanzadas              │
+└────────────────────────────────────────────────┘
 
 --Devuelve un listado de los profesores junto con el nombre del departamento al que están vinculados. El listado debe devolver cuatro columnas, primer apellido, segundo apellido, nombre y nombre del departamento. El resultado estará ordenado alfabéticamente de menor a mayor por los apellidos y el nombre.
+SELECT p.nombre,p.apellido1,p.apellido2,d.nombre From profesor as pro join departamento as d on d.id=pro.id_departamento join persona as p on p.id=pro.id_profesor  ORDER BY p.nombre ;
+┌───────────┬────────────┬────────────┬────────────────────┐
+│  nombre   │ apellido1  │ apellido2  │       nombre       │
+├───────────┼────────────┼────────────┼────────────────────┤
+│ Alejandro │ Kohler     │ Schoen     │ Matemáticas        │
+│ Alfredo   │ Stiedemann │ Morissette │ Química y Física   │
+│ Antonio   │ Fahey      │ Considine  │ Economía y Empresa │
+│ Carmen    │ Streich    │ Hirthe     │ Educación          │
+│ Cristina  │ Lemke      │ Rutherford │ Economía y Empresa │
+│ David     │ Schmidt    │ Fisher     │ Matemáticas        │
+│ Esther    │ Spencer    │ Lakin      │ Educación          │
+│ Francesca │ Schowalter │ Muller     │ Química y Física   │
+│ Guillermo │ Ruecker    │ Upton      │ Educación          │
+│ Manolo    │ Hamill     │ Kozey      │ Informática        │
+│ Micaela   │ Monahan    │ Murray     │ Agronomía          │
+│ Zoe       │ Ramirez    │ Gea        │ Informática        │
+└───────────┴────────────┴────────────┴────────────────────┘
 
 --Devuelve un listado con el nombre de las asignaturas, año de inicio y año de fin del curso escolar del alumno con nif 26902806M.
 
