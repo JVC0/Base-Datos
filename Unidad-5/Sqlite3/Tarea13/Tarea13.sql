@@ -130,16 +130,39 @@ SELECT p.nombre,p.apellido1,p.apellido2,d.nombre From profesor as pro join depar
 └───────────┴────────────┴────────────┴────────────────────┘
 
 --Devuelve un listado con el nombre de las asignaturas, año de inicio y año de fin del curso escolar del alumno con nif 26902806M.
-SELECT a.nombre 
+SELECT a.nombre,c.anyo_inicio,c.anyo_fin FROM persona as p JOIN alumno_se_matricula_asignatura as m on p.id=m.id_alumno JOIN asignatura as a on a.id=m.id_asignatura JOIN curso_escolar as c on c.id=m.id_curso_escolar WHERE p.nif="26902806M";
+┌──────────────────────────────────────┬─────────────┬──────────┐
+│                nombre                │ anyo_inicio │ anyo_fin │
+├──────────────────────────────────────┼─────────────┼──────────┤
+│ Álgegra lineal y matemática discreta │ 2014        │ 2015     │
+│ Cálculo                              │ 2014        │ 2015     │
+│ Física para informática              │ 2014        │ 2015     │
+└──────────────────────────────────────┴─────────────┴──────────┘
+
 --Devuelve un listado con el nombre de todos los departamentos que tienen profesores que imparten alguna asignatura en el Grado en Ingeniería Informática (Plan 2015).
+SELECT DISTINCT p.nombre From profesor as pro join departamento as d on d.id=pro.id_departamento join persona as p on p.id=pro.id_profesor join asignatura as a on pro.id_profesor=a.id_profesor join grado as g on g.id=a.id_grado ;
+┌────────┐
+│ nombre │
+├────────┤
+│ Zoe    │
+│ Manolo │
+└────────┘
 
 --Devuelve un listado con todos los alumnos que se han matriculado en alguna asignatura durante el curso escolar 2018/2019.
+SELECT DISTINCT p.nombre FROM persona as p JOIN alumno_se_matricula_asignatura as m on p.id=m.id_alumno JOIN asignatura as a on a.id=m.id_asignatura JOIN curso_escolar as c on c.id=m.id_curso_escolar WHERE  anyo_inicio=2018 and anyo_fin=2019;
+┌────────┐
+│ nombre │
+├────────┤
+│ Sonia  │
+│ Irene  │
+│ Inma   │
+└────────┘
 
 Consultas multitabla (Where)
 --Devuelve un listado con los nombres de todos los profesores y los departamentos que tienen vinculados. El listado también debe mostrar aquellos profesores que no tienen ningún departamento asociado. El listado debe devolver cuatro columnas, nombre del departamento, primer apellido, segundo apellido y nombre del profesor. El resultado estará ordenado alfabéticamente de menor a mayor por el nombre del departamento, apellidos y el nombre.
 
 --Devuelve un listado con los profesores que no están asociados a un departamento.
-
+SELECT p.nombre From persona as p , profesor as pro, departamento as d where
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que no imparten ninguna asignatura.
