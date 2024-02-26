@@ -1,13 +1,71 @@
 Consultas de una única tabla
 --Devuelve un listado con el primer apellido, segundo apellido y el nombre de todos los alumnos. El listado deberá estar ordenado alfabéticamente de menor a mayor por el primer apellido, segundo apellido y nombre.
+SELECT nombre,apellido1,apellido2 From persona Where tipo="alumno" ORDER BY nombre;
+┌──────────┬───────────┬───────────┐
+│  nombre  │ apellido1 │ apellido2 │
+├──────────┼───────────┼───────────┤
+│ Antonio  │ Domínguez │ Guerrero  │
+│ Daniel   │ Herman    │ Pacocha   │
+│ Inma     │ Lakin     │ Yundt     │
+│ Irene    │ Hernández │ Martínez  │
+│ Ismael   │ Strosin   │ Turcotte  │
+│ José     │ Koss      │ Bayer     │
+│ Juan     │ Saez      │ Vega      │
+│ Juan     │ Gutiérrez │ López     │
+│ Pedro    │ Heller    │ Pagac     │
+│ Ramón    │ Herzog    │ Tremblay  │
+│ Salvador │ Sánchez   │ Pérez     │
+│ Sonia    │ Gea       │ Ruiz      │
+└──────────┴───────────┴───────────┘
 
-Averigua el nombre y los dos apellidos de los alumnos que no han dado de alta su número de teléfono en la base de datos.
+--Averigua el nombre y los dos apellidos de los alumnos que no han dado de alta su número de teléfono en la base de datos.
+SELECT nombre,apellido1,apellido2 From persona Where telefono is not null and tipo="alumno";
+┌──────────┬───────────┬───────────┐
+│  nombre  │ apellido1 │ apellido2 │
+├──────────┼───────────┼───────────┤
+│ Salvador │ Sánchez   │ Pérez     │
+│ Juan     │ Saez      │ Vega      │
+│ José     │ Koss      │ Bayer     │
+│ Ramón    │ Herzog    │ Tremblay  │
+│ Daniel   │ Herman    │ Pacocha   │
+│ Inma     │ Lakin     │ Yundt     │
+│ Juan     │ Gutiérrez │ López     │
+│ Antonio  │ Domínguez │ Guerrero  │
+│ Irene    │ Hernández │ Martínez  │
+│ Sonia    │ Gea       │ Ruiz      │
+└──────────┴───────────┴───────────┘
+
 
 --Devuelve el listado de los alumnos que nacieron en 1999.
+SELECT * FROM  persona WHERE fecha_nacimiento REGEXP '1999/' and tipo="alumno"; 
+┌────┬───────────┬─────────┬───────────┬───────────┬─────────┬─────────────────┬───────────┬──────────────────┬──────┬────────┐
+│ id │    nif    │ nombre  │ apellido1 │ apellido2 │ ciudad  │    direccion    │ telefono  │ fecha_nacimiento │ sexo │  tipo  │
+├────┼───────────┼─────────┼───────────┼───────────┼─────────┼─────────────────┼───────────┼──────────────────┼──────┼────────┤
+│ 7  │ 97258166K │ Ismael  │ Strosin   │ Turcotte  │ Almería │ C/ Neptuno      │           │ 1999/05/24       │ H    │ alumno │
+│ 22 │ 41491230N │ Antonio │ Domínguez │ Guerrero  │ Almería │ C/ Cabo de Gata │ 626652498 │ 1999/02/11       │ H    │ alumno │
+└────┴───────────┴─────────┴───────────┴───────────┴─────────┴─────────────────┴───────────┴──────────────────┴──────┴────────┘
 
 --Devuelve el listado de profesores que no han dado de alta su número de teléfono en la base de datos y además su nif termina en K.
+SELECT  * FROM persona WHERE telefono is NULL and nif REGEXP 'K$'and tipo="profesor";
+┌────┬───────────┬───────────┬───────────┬───────────┬─────────┬───────────────────────────┬──────────┬──────────────────┬──────┬──────────┐
+│ id │    nif    │  nombre   │ apellido1 │ apellido2 │ ciudad  │         direccion         │ telefono │ fecha_nacimiento │ sexo │   tipo   │
+├────┼───────────┼───────────┼───────────┼───────────┼─────────┼───────────────────────────┼──────────┼──────────────────┼──────┼──────────┤
+│ 16 │ 10485008K │ Antonio   │ Fahey     │ Considine │ Almería │ C/ Sierra de los Filabres │          │ 1982/03/18       │ H    │ profesor │
+│ 17 │ 85869555K │ Guillermo │ Ruecker   │ Upton     │ Almería │ C/ Sierra de Gádor        │          │ 1973/05/05       │ H    │ profesor │
+└────┴───────────┴───────────┴───────────┴───────────┴─────────┴───────────────────────────┴──────────┴──────────────────┴──────┴──────────┘
 
 --Devuelve el listado de las asignaturas que se imparten en el primer cuatrimestre, en el tercer curso del grado que tiene el identificador 7.
+SELECT * From asignatura Where cuatrimestre=1 and curso=3 and id_grado=7;
+┌────┬───────────────────────────────────────────┬──────────┬─────────────┬───────┬──────────────┬─────────────┬──────────┐
+│ id │                  nombre                   │ creditos │    tipo     │ curso │ cuatrimestre │ id_profesor │ id_grado │
+├────┼───────────────────────────────────────────┼──────────┼─────────────┼───────┼──────────────┼─────────────┼──────────┤
+│ 72 │ Bases moleculares del desarrollo vegetal  │ 4.5      │ obligatoria │ 3     │ 1            │             │ 7        │
+│ 73 │ Fisiología animal                         │ 4.5      │ obligatoria │ 3     │ 1            │             │ 7        │
+│ 74 │ Metabolismo y biosíntesis de biomoléculas │ 6.0      │ obligatoria │ 3     │ 1            │             │ 7        │
+│ 75 │ Operaciones de separación                 │ 6.0      │ obligatoria │ 3     │ 1            │             │ 7        │
+│ 76 │ Patología molecular de plantas            │ 4.5      │ obligatoria │ 3     │ 1            │             │ 7        │
+│ 77 │ Técnicas instrumentales básicas           │ 4.5      │ obligatoria │ 3     │ 1            │             │ 7        │
+└────┴───────────────────────────────────────────┴──────────┴─────────────┴───────┴──────────────┴─────────────┴──────────┘
 
 Consultas multitabla (Join)
 --Devuelve un listado con los datos de todas las alumnas que se han matriculado alguna vez en el Grado en Ingeniería Informática (Plan 2015).
