@@ -190,6 +190,22 @@ SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=p
 --Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 
 --Devuelve un listado con todos los departamentos que tienen alguna asignatura que no se haya impartido en ningún curso escolar. El resultado debe mostrar el nombre del departamento y el nombre de la asignatura que no se haya impartido nunca.
+select distinct d.nombre, a.nombre  from departamento as d, profesor as pro, asignatura as a where d.id = pro.id_departamento and pro.id_profesor = a.id_profesor and not exists (select m.id_asignatura from alumno_se_matricula_asignatura as m where m.id_asignatura = a.id);
+┌─────────────┬───────────────────────────────────────────────────┐
+│   nombre    │                      nombre                       │
+├─────────────┼───────────────────────────────────────────────────┤
+│ Informática │ Arquitectura de Computadores                      │
+│ Informática │ Estructura de Datos y Algoritmos I                │
+│ Informática │ Ingeniería del Software                           │
+│ Informática │ Sistemas Inteligentes                             │
+│ Informática │ Sistemas Operativos                               │
+│ Informática │ Bases de Datos                                    │
+│ Informática │ Estructura de Datos y Algoritmos II               │
+│ Informática │ Fundamentos de Redes de Computadores              │
+│ Informática │ Planificación y Gestión de Proyectos Informáticos │
+│ Informática │ Programación de Servicios Software                │
+│ Informática │ Desarrollo de interfaces de usuario               │
+└─────────────┴───────────────────────────────────────────────────┘
 
 Consultas resúmen (Funciones)
 --Devuelve el número total de alumnas que hay.
@@ -239,14 +255,69 @@ select d.*, (select count(*) from profesor as p where p.id_departamento = d.id) 
 
 
 --Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno. Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados también tienen que aparecer en el listado. El resultado deberá estar ordenado de mayor a menor por el número de asignaturas.
+select g.nombre as grado, (select count(a.id) from asignatura as a where a.id_grado = g.id) as asignaturas from grado as g group by grado order by asignaturas desc;
+┌────────────────────────────────────────────────────────┬─────────────┐
+│                         grado                          │ asignaturas │
+├────────────────────────────────────────────────────────┼─────────────┤
+│ Grado en Ingeniería Informática (Plan 2015)            │ 51          │
+│ Grado en Biotecnología (Plan 2015)                     │ 32          │
+│ Grado en Química (Plan 2009)                           │ 0           │
+│ Grado en Matemáticas (Plan 2010)                       │ 0           │
+│ Grado en Ingeniería Química Industrial (Plan 2010)     │ 0           │
+│ Grado en Ingeniería Mecánica (Plan 2010)               │ 0           │
+│ Grado en Ingeniería Eléctrica (Plan 2014)              │ 0           │
+│ Grado en Ingeniería Electrónica Industrial (Plan 2010) │ 0           │
+│ Grado en Ingeniería Agrícola (Plan 2015)               │ 0           │
+│ Grado en Ciencias Ambientales (Plan 2009)              │ 0           │
+└────────────────────────────────────────────────────────┴─────────────┘
 
 --Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno, de los grados que tengan más de 40 asignaturas asociadas.
+select g.nombre as grado, count(a.id) as asignaturas from grado as g join asignatura as a on g.id = a.id_grado group by grado having asignaturas > 40;
+┌─────────────────────────────────────────────┬─────────────┐
+│                    grado                    │ asignaturas │
+├─────────────────────────────────────────────┼─────────────┤
+│ Grado en Ingeniería Informática (Plan 2015) │ 51          │
+└─────────────────────────────────────────────┴─────────────┘
 
 --Devuelve un listado que muestre el nombre de los grados y la suma del número total de créditos que hay para cada tipo de asignatura. El resultado debe tener tres columnas: nombre del grado, tipo de asignatura y la suma de los créditos de todas las asignaturas que hay de ese tipo. Ordene el resultado de mayor a menor por el número total de crédidos.
+select g.nombre as grado, a.tipo, sum(a.creditos) as creditos_totales from grado as g join asignatura as a on g.id = a.id_grado group by grado, a.tipo order by creditos_totales desc;
+┌─────────────────────────────────────────────┬─────────────┬──────────────────┐
+│                    grado                    │    tipo     │ creditos_totales │
+├─────────────────────────────────────────────┼─────────────┼──────────────────┤
+│ Grado en Ingeniería Informática (Plan 2015) │ optativa    │ 180.0            │
+│ Grado en Biotecnología (Plan 2015)          │ obligatoria │ 120.0            │
+│ Grado en Ingeniería Informática (Plan 2015) │ básica      │ 72.0             │
+│ Grado en Biotecnología (Plan 2015)          │ básica      │ 60.0             │
+│ Grado en Ingeniería Informática (Plan 2015) │ obligatoria │ 54.0             │
+└─────────────────────────────────────────────┴─────────────┴──────────────────┘
 
 --Devuelve un listado que muestre cuántos alumnos se han matriculado de alguna asignatura en cada uno de los cursos escolares. El resultado deberá mostrar dos columnas, una columna con el año de inicio del curso escolar y otra con el número de alumnos matriculados.
+select c.anyo_inicio, count(a.id_alumno) as alumnos_matriculados from curso_escolar as c join alumno_se_matricula_asignatura as a on c.id = a.id_curso_escolar group by c.anyo_inicio;
+┌─────────────┬──────────────────────┐
+│ anyo_inicio │ alumnos_matriculados │
+├─────────────┼──────────────────────┤
+│ 2014        │ 9                    │
+│ 2018        │ 30                   │
+└─────────────┴──────────────────────┘
 
 --Devuelve un listado con el número de asignaturas que imparte cada profesor. El listado debe tener en cuenta aquellos profesores que no imparten ninguna asignatura. El resultado mostrará cinco columnas: id, nombre, primer apellido, segundo apellido y número de asignaturas. El resultado estará ordenado de mayor a menor por el número de asignaturas.
+select p.id, p.nombre, p.apellido1, p.apellido2, (select count(id) from asignatura where p.id = id_profesor) as asignaturas from persona as p join profesor as pro on p.id = pro.id_profesor order by asignaturas desc;
+┌────┬───────────┬────────────┬────────────┬─────────────┐
+│ id │  nombre   │ apellido1  │ apellido2  │ asignaturas │
+├────┼───────────┼────────────┼────────────┼─────────────┤
+│ 14 │ Manolo    │ Hamill     │ Kozey      │ 11          │
+│ 3  │ Zoe       │ Ramirez    │ Gea        │ 10          │
+│ 5  │ David     │ Schmidt    │ Fisher     │ 0           │
+│ 8  │ Cristina  │ Lemke      │ Rutherford │ 0           │
+│ 10 │ Esther    │ Spencer    │ Lakin      │ 0           │
+│ 12 │ Carmen    │ Streich    │ Hirthe     │ 0           │
+│ 13 │ Alfredo   │ Stiedemann │ Morissette │ 0           │
+│ 15 │ Alejandro │ Kohler     │ Schoen     │ 0           │
+│ 16 │ Antonio   │ Fahey      │ Considine  │ 0           │
+│ 17 │ Guillermo │ Ruecker    │ Upton      │ 0           │
+│ 18 │ Micaela   │ Monahan    │ Murray     │ 0           │
+│ 20 │ Francesca │ Schowalter │ Muller     │ 0           │
+└────┴───────────┴────────────┴────────────┴─────────────┘
 
 Subconsultas
 --Devuelve todos los datos del alumno más joven.
