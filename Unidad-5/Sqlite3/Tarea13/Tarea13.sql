@@ -185,6 +185,7 @@ SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=p
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que no imparten ninguna asignatura.
+SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=pro.id_profesor and pro.id_profesor not in (SELECT id_profesor FROM asignatura);
 
 --Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 
@@ -192,12 +193,50 @@ SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=p
 
 Consultas resúmen (Funciones)
 --Devuelve el número total de alumnas que hay.
+select COUNT(nombre) from persona where sexo="M" and tipo="alumno";
+┌───────────────┐
+│ COUNT(nombre) │
+├───────────────┤
+│ 3             │
+└───────────────┘
 
-Calcula cuántos alumnos nacieron en 1999.
+--Calcula cuántos alumnos nacieron en 1999.
+select COUNT(nombre) from persona where tipo="alumno" AND fecha_nacimiento REGEXP'1999';
+┌───────────────┐
+│ COUNT(nombre) │
+├───────────────┤
+│ 2             │
+└───────────────┘
 
-Calcula cuántos profesores hay en cada departamento. El resultado sólo debe mostrar dos columnas, una con el nombre del departamento y otra con el número de profesores que hay en ese departamento. El resultado sólo debe incluir los departamentos que tienen profesores asociados y deberá estar ordenado de mayor a menor por el número de profesores.
+--Calcula cuántos profesores hay en cada departamento. El resultado sólo debe mostrar dos columnas, una con el nombre del departamento y otra con el número de profesores que hay en ese departamento. El resultado sólo debe incluir los departamentos que tienen profesores asociados y deberá estar ordenado de mayor a menor por el número de profesores.
+select d.nombre,COUNT(p.id_profesor)as numero_profesores from profesor as p join departamento as d on d.id=p.id_departamento GROUP BY d.nombre order by numero_profesores ;
+┌────────────────────┬───────────────────┐
+│       nombre       │ numero_profesores │
+├────────────────────┼───────────────────┤
+│ Agronomía          │ 1                 │
+│ Economía y Empresa │ 2                 │
+│ Informática        │ 2                 │
+│ Matemáticas        │ 2                 │
+│ Química y Física   │ 2                 │
+│ Educación          │ 3                 │
+└────────────────────┴───────────────────┘
 
 --Devuelve un listado con todos los departamentos y el número de profesores que hay en cada uno de ellos. Tenga en cuenta que pueden existir departamentos que no tienen profesores asociados. Estos departamentos también tienen que aparecer en el listado.
+select d.*, (select count(*) from profesor as p where p.id_departamento = d.id) as profesores from departamento as d group by d.id;
+┌────┬─────────────────────┬────────────┐
+│ id │       nombre        │ profesores │
+├────┼─────────────────────┼────────────┤
+│ 1  │ Informática         │ 2          │
+│ 2  │ Matemáticas         │ 2          │
+│ 3  │ Economía y Empresa  │ 2          │
+│ 4  │ Educación           │ 3          │
+│ 5  │ Agronomía           │ 1          │
+│ 6  │ Química y Física    │ 2          │
+│ 7  │ Filología           │ 0          │
+│ 8  │ Derecho             │ 0          │
+│ 9  │ Biología y Geología │ 0          │
+└────┴─────────────────────┴────────────┘
+
 
 --Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno. Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados también tienen que aparecer en el listado. El resultado deberá estar ordenado de mayor a menor por el número de asignaturas.
 
@@ -211,13 +250,102 @@ Calcula cuántos profesores hay en cada departamento. El resultado sólo debe mo
 
 Subconsultas
 --Devuelve todos los datos del alumno más joven.
-
+SELECT * FROM persona WHERE tipo="alumno" ORDER BY fecha_nacimiento LIMIT 1;
+┌────┬───────────┬──────────┬───────────┬───────────┬─────────┬─────────────────────────┬───────────┬──────────────────┬──────┬────────┐
+│ id │    nif    │  nombre  │ apellido1 │ apellido2 │ ciudad  │        direccion        │ telefono  │ fecha_nacimiento │ sexo │  tipo  │
+├────┼───────────┼──────────┼───────────┼───────────┼─────────┼─────────────────────────┼───────────┼──────────────────┼──────┼────────┤
+│ 1  │ 26902806M │ Salvador │ Sánchez   │ Pérez     │ Almería │ C/ Real del barrio alto │ 950254837 │ 1991/03/28       │ H    │ alumno │
+└────┴───────────┴──────────┴───────────┴───────────┴─────────┴─────────────────────────┴───────────┴──────────────────┴──────┴────────┘
 --Devuelve un listado con los profesores que no están asociados a un departamento.
-
+SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=pro.id_profesor and  NOT EXISTS (SELECT 1 FROM departamento AS d WHERE d.id = pro.id_departamento) ORDER BY p.nombre;
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que tienen un departamento asociado y que no imparten ninguna asignatura.
-SELECT p.nombre from persona as p join profesor as pr on p.id=pr.id_profesor join departamento as d on d.id=d.id_departamento where pr.id_profesor not in (SELECT id_profesor from asignatura);
+SELECT p.nombre from persona as p join profesor as pr on p.id=pr.id_profesor join departamento as d on d.id=pr.id_departamento where pr.id_profesor not in (SELECT DISTINCT id_profesor from asignatura as a where a.id_profesor=pr.id_profesor);
+┌───────────┐
+│  nombre   │
+├───────────┤
+│ David     │
+│ Cristina  │
+│ Esther    │
+│ Carmen    │
+│ Alfredo   │
+│ Alejandro │
+│ Antonio   │
+│ Guillermo │
+│ Micaela   │
+│ Francesca │
+└───────────┘
+
 --Devuelve un listado con las asignaturas que no tienen un profesor asignado.
+SELECT nombre FROM asignatura WHERE id_profesor IS NULL;
+┌────────────────────────────────────────────────────────────────────────┐
+│                                 nombre                                 │
+├────────────────────────────────────────────────────────────────────────┤
+│ Ingeniería de Requisitos                                               │
+│ Integración de las Tecnologías de la Información en las Organizaciones │
+│ Modelado y Diseño del Software 1                                       │
+│ Multiprocesadores                                                      │
+│ Seguridad y cumplimiento normativo                                     │
+│ Sistema de Información para las Organizaciones                         │
+│ Tecnologías web                                                        │
+│ Teoría de códigos y criptografía                                       │
+│ Administración de bases de datos                                       │
+│ Herramientas y Métodos de Ingeniería del Software                      │
+│ Informática industrial y robótica                                      │
+│ Ingeniería de Sistemas de Información                                  │
+│ Modelado y Diseño del Software 2                                       │
+│ Negocio Electrónico                                                    │
+│ Periféricos e interfaces                                               │
+│ Sistemas de tiempo real                                                │
+│ Tecnologías de acceso a red                                            │
+│ Tratamiento digital de imágenes                                        │
+│ Administración de redes y sistemas operativos                          │
+│ Almacenes de Datos                                                     │
+│ Fiabilidad y Gestión de Riesgos                                        │
+│ Líneas de Productos Software                                           │
+│ Procesos de Ingeniería del Software 1                                  │
+│ Tecnologías multimedia                                                 │
+│ Análisis y planificación de las TI                                     │
+│ Desarrollo Rápido de Aplicaciones                                      │
+│ Gestión de la Calidad y de la Innovación Tecnológica                   │
+│ Inteligencia del Negocio                                               │
+│ Procesos de Ingeniería del Software 2                                  │
+│ Seguridad Informática                                                  │
+│ Biologia celular                                                       │
+│ Física                                                                 │
+│ Matemáticas I                                                          │
+│ Química general                                                        │
+│ Química orgánica                                                       │
+│ Biología vegetal y animal                                              │
+│ Bioquímica                                                             │
+│ Genética                                                               │
+│ Matemáticas II                                                         │
+│ Microbiología                                                          │
+│ Botánica agrícola                                                      │
+│ Fisiología vegetal                                                     │
+│ Genética molecular                                                     │
+│ Ingeniería bioquímica                                                  │
+│ Termodinámica y cinética química aplicada                              │
+│ Biorreactores                                                          │
+│ Biotecnología microbiana                                               │
+│ Ingeniería genética                                                    │
+│ Inmunología                                                            │
+│ Virología                                                              │
+│ Bases moleculares del desarrollo vegetal                               │
+│ Fisiología animal                                                      │
+│ Metabolismo y biosíntesis de biomoléculas                              │
+│ Operaciones de separación                                              │
+│ Patología molecular de plantas                                         │
+│ Técnicas instrumentales básicas                                        │
+│ Bioinformática                                                         │
+│ Biotecnología de los productos hortofrutículas                         │
+│ Biotecnología vegetal                                                  │
+│ Genómica y proteómica                                                  │
+│ Procesos biotecnológicos                                               │
+│ Técnicas instrumentales avanzadas                                      │
+└────────────────────────────────────────────────────────────────────────┘
+
 
 --Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
+select * from departamento where not EXISTS (select 1 from profesor);
