@@ -350,6 +350,7 @@ SELECT p.nombre from persona as p join profesor as pr on p.id=pr.id_profesor joi
 
 --Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 SELECT nombre FROM asignatura WHERE id_profesor IS NULL;
+SELECT nombre FROM asignatura as a WHERE id_profesor not in (select id_profesor from profesor as p where p.id_profesor=a.id_profesor);
 ┌────────────────────────────────────────────────────────────────────────┐
 │                                 nombre                                 │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -419,4 +420,4 @@ SELECT nombre FROM asignatura WHERE id_profesor IS NULL;
 
 
 --Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
-select * from departamento where not EXISTS (select 1 from profesor);
+select * from departamento as d join profesor as p on d.id=p.id_departamento where id not in  (select a.id_profesor from profesor as p join asignatura as a on p.id_profesor=a.id_profesor );
