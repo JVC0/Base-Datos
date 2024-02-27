@@ -160,9 +160,28 @@ SELECT DISTINCT p.nombre FROM persona as p JOIN alumno_se_matricula_asignatura a
 
 Consultas multitabla (Where)
 --Devuelve un listado con los nombres de todos los profesores y los departamentos que tienen vinculados. El listado también debe mostrar aquellos profesores que no tienen ningún departamento asociado. El listado debe devolver cuatro columnas, nombre del departamento, primer apellido, segundo apellido y nombre del profesor. El resultado estará ordenado alfabéticamente de menor a mayor por el nombre del departamento, apellidos y el nombre.
+select p.nombre, p.apellido1, p.apellido2, d.nombre from persona as p, profesor as pro, departamento as d where p.id=pro.id_profesor and pro.id_departamento=d.id or pro.id_departamento is null order by d.nombre, p.apellido1, p.apellido2, p.nombre;
+┌───────────┬────────────┬────────────┬────────────────────┐
+│  nombre   │ apellido1  │ apellido2  │       nombre       │
+├───────────┼────────────┼────────────┼────────────────────┤
+│ Micaela   │ Monahan    │ Murray     │ Agronomía          │
+│ Antonio   │ Fahey      │ Considine  │ Economía y Empresa │
+│ Cristina  │ Lemke      │ Rutherford │ Economía y Empresa │
+│ Guillermo │ Ruecker    │ Upton      │ Educación          │
+│ Esther    │ Spencer    │ Lakin      │ Educación          │
+│ Carmen    │ Streich    │ Hirthe     │ Educación          │
+│ Manolo    │ Hamill     │ Kozey      │ Informática        │
+│ Zoe       │ Ramirez    │ Gea        │ Informática        │
+│ Alejandro │ Kohler     │ Schoen     │ Matemáticas        │
+│ David     │ Schmidt    │ Fisher     │ Matemáticas        │
+│ Francesca │ Schowalter │ Muller     │ Química y Física   │
+│ Alfredo   │ Stiedemann │ Morissette │ Química y Física   │
+└───────────┴────────────┴────────────┴────────────────────┘
 
 --Devuelve un listado con los profesores que no están asociados a un departamento.
-SELECT p.nombre From persona as p , profesor as pro where p.id=pro.id_profesor and id_profesor not in (SELECT id from departamento);
+SELECT p.nombre,pro.id_profesor From persona as p , profesor as pro where p.id=pro.id_profesor and  NOT EXISTS (SELECT 1 FROM departamento AS d WHERE d.id = pro.id_departamento) ORDER BY p.nombre;
+
+
 --Devuelve un listado con los departamentos que no tienen profesores asociados.
 
 --Devuelve un listado con los profesores que no imparten ninguna asignatura.
