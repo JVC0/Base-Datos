@@ -151,7 +151,7 @@ select * from clientes as c join ordenes as o on c.id_cliente=o.id_cliente where
 #### Mostrar los clientes cuyos nombres comienzan con la letra "M".
 
 ```slq
-
+select * from clientes where nombre regexp '^M';
 ```
 
 #### Mostrar las órdenes que contienen más de 2 productos.
