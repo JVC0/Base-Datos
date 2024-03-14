@@ -46,14 +46,14 @@ select * from productos;
 #### Mostrar todos los detalles de las órdenes.
 
 ```sql
-select * from ordenes;
-+----------+------------+-------------+
-| id_orden | id_cliente | fecha_orden |
-+----------+------------+-------------+
-|        1 |          1 | 2024-03-01  |
-|        2 |          2 | 2024-03-02  |
-|        3 |          3 | 2024-03-03  |
-+----------+------------+-------------+
+select * from detalles_ordenes;
++------------+----------+-------------+----------+
+| id_detalle | id_orden | id_producto | cantidad |
++------------+----------+-------------+----------+
+|          1 |        1 |           1 |        2 |
+|          2 |        2 |           2 |        1 |
+|          3 |        3 |           3 |        3 |
++------------+----------+-------------+----------+
 ```
 
 #### Mostrar los primeros 5 clientes ordenados por nombre.
@@ -105,6 +105,12 @@ Select * from clientes as c join ordenes as o on c.id_cliente=o.id_cliente where
 #### Mostrar las órdenes que contienen más de 2 productos.
 
 ```sql
+select * from detalles_ordenes where cantidad>2;
++------------+----------+-------------+----------+
+| id_detalle | id_orden | id_producto | cantidad |
++------------+----------+-------------+----------+
+|          3 |        3 |           3 |        3 |
++------------+----------+-------------+----------+
 
 ```
 
