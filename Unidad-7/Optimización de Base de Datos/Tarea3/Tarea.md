@@ -3607,35 +3607,120 @@ create table MOVIMIENTO_BIS select * from MOVIMIENTO;
 
 ```
 
-Nota: Muestra el resultado y razona la respueta.
+#### Con la cláusula DESCRIBE observa cuál es la situación de la tabla clonada, ¿Qué le pasa al índice y a la propiedad AUTO_INCREMENT?
+#### Nota: Compara el resultado con la tabla MOVIMIENTO.
 
-Con la cláusula DESCRIBE observa cuál es la situación de la tabla clonada, ¿Qué le pasa al índice y a la propiedad AUTO_INCREMENT?
-Nota: Compara el resultado con la tabla MOVIMIENTO.
+No tiene el auto increment o el primary
+```sql
+DESCRIBE MOVIMIENTO_BIS;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| identificador | int         | NO   |     | 0       |       |
+| Articulo      | varchar(50) | NO   |     | NULL    |       |
+| Fecha         | date        | NO   |     | NULL    |       |
+| Cantidad      | int         | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+
+```
 
 Utilizando EXPLAIN observa el plan de ejecución de la consulta que devuelve toda la información de los movimientos con identificador=3. Tanto en la tabla MOVIMIENTOS como en la tabla MOVIMIENTOS_bis. Escribe tus conclusiones al respecto.
 
-Supongamos que las consultas de rango que se van a hacer en nuestra tabla son frecuentes y además no por el identificador, sino por la fecha. Este es motivo suficiente para que sea la fecha un índice de tabla y así mejorar el tiempo de respuesta de nuestras consultas. En la tabla MOVIMIENTO_BIS creamos un índice para la fecha (IX_FECHA_BIS) y otro índice para el identificador (IX_IDENTIFICADOR).
+```sql
+EXPLAIN SELECT * FROM MOVIMIENTO where identificador = 3;
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table      | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | MOVIMIENTO | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
 
-8.- Analiza el plan de ejecución de las siguientes consultas y observa la diferencia: Consulta1
+```
 
+```sql
+EXPLAIN SELECT * FROM MOVIMIENTO_BIS where identificador =3;
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table          | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | MOVIMIENTO_BIS | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 3539 |    10.00 | Using where |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+
+```
+
+### Supongamos que las consultas de rango que se van a hacer en nuestra tabla son frecuentes y además no por el identificador, sino por la fecha. Este es motivo suficiente para que sea la fecha un índice de tabla y así mejorar el tiempo de respuesta de nuestras consultas. En la tabla MOVIMIENTO_BIS creamos un índice para la fecha (IX_FECHA_BIS) y otro índice para el identificador (IX_IDENTIFICADOR).
+
+```sql
+CREATE UNIQUE INDEX IX_DENTIFICADOR ON MOVIMIENTO_BIS(identificador);
+CREATE INDEX IX_FECHA_BIS ON MOVIMIENTO_BIS(fecha);
+```
+
+```sql
+EXPLAIN SELECT * FROM MOVIMIENTO where identificador = 3;
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table      | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | MOVIMIENTO | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0,00 sec)
+
+```
+
+```sql
+EXPLAIN SELECT * FROM MOVIMIENTO_BIS where identificador =3;
++----+-------------+----------------+------------+-------+-----------------+-----------------+---------+-------+------+----------+-------+
+| id | select_type | table          | partitions | type  | possible_keys   | key             | key_len | ref   | rows | filtered | Extra |
++----+-------------+----------------+------------+-------+-----------------+-----------------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | MOVIMIENTO_BIS | NULL       | const | IX_DENTIFICADOR | IX_DENTIFICADOR | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+----------------+------------+-------+-----------------+-----------------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0,00 sec)
+
+```
+
+### 8.- Analiza el plan de ejecución de las siguientes consultas y observa la diferencia: Consulta1
+
+```sql
 select * from MOVIMIENTO where identificador=3;
-consulta 2
++---------------+-----------+------------+----------+
+| identificador | Articulo  | Fecha      | Cantidad |
++---------------+-----------+------------+----------+
+|             3 | Producto3 | 2012-04-15 |   991214 |
++---------------+-----------+------------+----------+
 
+```
+### consulta 2
+
+```sql
 select identificador from MOVIMIENTO_BIS where identificador=3;
-Fíjata en que en la consulta 1 pedimos todos los campos. ¿A través de que indice se busca? ¿Por qué crees que lo hace así? En la consulta 2 solo pedimos el identificador. ¿A través de que índice busca? ¿Por qué crees que lo hace así? Analiza la ejecución.
++---------------+
+| identificador |
++---------------+
+|             3 |
++---------------+
+```
 
-Analiza el plan de ejecución de las siguientes consultas y observa la diferencia:
-Consulta 1:
+### Fíjata en que en la consulta 1 pedimos todos los campos. ¿A través de que indice se busca? ¿Por qué crees que lo hace así? En la consulta 2 solo pedimos el identificador. ¿A través de que índice busca? ¿Por qué crees que lo hace así? Analiza la ejecución.
 
-SELECT fecha FROM MOVIMIENTO WHERE fecha BETWEEN ‘01/01/2012’ and ‘01/03/2012’;
-Consulta 2
+### Analiza el plan de ejecución de las siguientes consultas y observa la diferencia:
+### Consulta 1:
 
+```sql
+SELECT fecha FROM MOVIMIENTO WHERE fecha BETWEEN ‘2012-01-01’ and ‘2012-03-01’;
+```
+
+### Consulta 2
+
+```sql
 SELECT * FROM MOVIMIENTO_BIS WHERE fecha BETWEEN ‘01/01/2012’ and ‘01/03/2012’;
-Fijate que en la consulta 2 pedimos todos los campos. ¿A través de que índice busca? ¿Por qué crees que lo hace así? En la consulta 1 solo pedimos la fecha. ¿A través de que índice busca? ¿Por qué crees que lo hace así? Analiza la ejecución.
+```
 
-Vamos a crear un índice por fecha (IX_FECHA) en la tabla MOVIMIENTO, puesto que no lo tenía, en este caso la tabla ya tenía un indice, la clave primaria.
+### Fijate que en la consulta 2 pedimos todos los campos. ¿A través de que índice busca? ¿Por qué crees que lo hace así? En la consulta 1 solo pedimos la fecha. ¿A través de que índice busca? ¿Por qué crees que lo hace así? Analiza la ejecución.
+
+### Vamos a crear un índice por fecha (IX_FECHA) en la tabla MOVIMIENTO, puesto que no lo tenía, en este caso la tabla ya tenía un indice, la clave primaria.
 Visualiza los indices de las tablas MOVIMIENTO y MOVIMIENTO_BIS.
-Analiza el plan de ejecución de las siguientes consultas y observa la diferencia: Consulta 1:
+
+### Analiza el plan de ejecución de las siguientes consultas y observa la diferencia: Consulta 1:\
+
+```sql
 SELECT fecha FROM MOVIMIENTO WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
 Consulta 2:
 
@@ -3646,3 +3731,4 @@ SELECT fecha FROM MOVIMIENTO_BIS WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
 Consulta 4:
 
 SELECT * FROM MOVIMIENTO_BIS WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
+```
