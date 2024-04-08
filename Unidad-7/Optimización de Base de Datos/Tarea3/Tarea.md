@@ -21,6 +21,7 @@ SHOW INDEX FROM MOVIMIENTO;
 +------------+------------+----------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 
 ```
+#### Solo aparace un index que es la clave primaria.
 
 #### Ejecuta la siguiente sentencia sql para generar datos de prueba:
 
@@ -3610,7 +3611,7 @@ create table MOVIMIENTO_BIS select * from MOVIMIENTO;
 #### Con la cláusula DESCRIBE observa cuál es la situación de la tabla clonada, ¿Qué le pasa al índice y a la propiedad AUTO_INCREMENT?
 #### Nota: Compara el resultado con la tabla MOVIMIENTO.
 
-No tiene el auto increment o el primary
+#### No tiene el auto increment ni la clave primaria
 ```sql
 DESCRIBE MOVIMIENTO_BIS;
 +---------------+-------------+------+-----+---------+-------+
@@ -3697,6 +3698,7 @@ select identificador from MOVIMIENTO_BIS where identificador=3;
 |             3 |
 +---------------+
 ```
+#### La diferencia es que en una tabla estas recorriendo todo y en la otra solo recorres la identificador
 
 ### Fíjata en que en la consulta 1 pedimos todos los campos. ¿A través de que indice se busca? ¿Por qué crees que lo hace así? En la consulta 2 solo pedimos el identificador. ¿A través de que índice busca? ¿Por qué crees que lo hace así? Analiza la ejecución.
 
