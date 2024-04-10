@@ -8899,7 +8899,7 @@ Conociendo es estos momentos ya la BBDD, se pide:
 
 Muestra el resultado de la consulta de las vistas que se proporcionan.
 Crea 5 vistas sobre la BBDD, y realizar la consulta, para mostrar los resultados. Las vistas deben de tener 3 o más tablas de la BBDD.
-
+```SQL
 CREATE VIEW nombre As
 select c.country, ci.city, a.address, s.staff_id, s.first_name, s.last_name 
 from country as c 
@@ -8914,3 +8914,14 @@ JOIN city AS ci ON ci.country_id = c.country_id
 JOIN address AS a ON a.city_id = ci.city_id
 JOIN customer AS cu ON a.address_id = cu.address_id
 ORDER BY cu.customer_id;
+
+CREATE VIEW nombre As
+select * from actor as a 
+join film_actor as fa on a.actor_id=fa.actor_id 
+join film as f on f.film_id=fa.film_id;
+
+CREATE VIEW nombre As
+select c.* from city as c join country as co on co.country_id=c.country_id 
+where co.country="Spain";
+
+```
