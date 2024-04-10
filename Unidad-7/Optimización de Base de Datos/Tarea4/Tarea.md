@@ -8900,5 +8900,17 @@ Conociendo es estos momentos ya la BBDD, se pide:
 Muestra el resultado de la consulta de las vistas que se proporcionan.
 Crea 5 vistas sobre la BBDD, y realizar la consulta, para mostrar los resultados. Las vistas deben de tener 3 o más tablas de la BBDD.
 
+CREATE VIEW nombre As
+select c.country, ci.city, a.address, s.staff_id, s.first_name, s.last_name 
+from country as c 
+join city as ci on ci.country_id=c.country_id 
+join address as a on a.city_id=ci.city_id 
+join staff as s on a.address_id=s.address_id;
 
-select c.country, ci.city, a.address, s.staff_id, s.first_name, s.last_name from country as c join city as ci on ci.country_id=c.country_id join address as a on a.city_id=ci.city_id join staff as s on a.address_id=s.address_id;
+CREATE VIEW nombre AS
+SELECT c.country, ci.city, a.address, cu.first_name, cu.last_name, cu.customer_id
+FROM country AS c
+JOIN city AS ci ON ci.country_id = c.country_id
+JOIN address AS a ON a.city_id = ci.city_id
+JOIN customer AS cu ON a.address_id = cu.address_id
+ORDER BY cu.customer_id;
