@@ -8899,3 +8899,6 @@ Conociendo es estos momentos ya la BBDD, se pide:
 
 Muestra el resultado de la consulta de las vistas que se proporcionan.
 Crea 5 vistas sobre la BBDD, y realizar la consulta, para mostrar los resultados. Las vistas deben de tener 3 o más tablas de la BBDD.
+
+
+select c.country, ci.city, a.address, s.staff_id, s.first_name, s.last_name from country as c join city as ci on ci.country_id=c.country_id join address as a on a.city_id=ci.city_id join staff as s on a.address_id=s.address_id;
