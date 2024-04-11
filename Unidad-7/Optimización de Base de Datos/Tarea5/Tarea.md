@@ -1,6 +1,3 @@
-
-### Índices
-
 - Consulte cuáles son los índices que hay en la tabla producto utilizando las instrucciones SQL que nos permiten obtener esta información de la tabla.
 - Haga uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas y diga cuál de las dos consultas realizará menos comparaciones para encontrar el producto que estamos buscando. ¿Cuántas comparaciones se realizan en cada caso? ¿Por qué?.
 
@@ -26,25 +23,37 @@
 |  1 | SIMPLE      | producto | NULL       | ALL  | NULL          | NULL | NULL    | NULL |  276 |    10.00 | Using where |
 +----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 ```
-#### La primera consulta recorrio una fila y la segunda consulta recorrio 276 filas.La rason por la que la primera tabla solo recorrio una fila es porque tiene el indice PRIMARY KEY.La rason por la que la segunda tabla recorrio todas la comlumnas es porque no tiene un indice como la primera consulta. 
+#### La primera consulta recorrió una fila y la segunda consulta recorrió 276 filas. La razón por la que la primera tabla solo recorrió una fila es porque tiene el índice PRIMARY KEY, mientras que la razón por la que la segunda tabla recorrió todas las filas es porque no tiene un índice como en la primera consulta. También se puede observar en el resultado de la segunda consulta que el tipo es 'ALL', lo que significa que ha recorrido toda la tabla.
 
   >Razona la respuesta, y analiza las diferencias.
 
 - Suponga que estamos trabajando con la base de datos jardineria y queremos saber optimizar las siguientes consultas. ¿Cuál de las dos sería más eficiente?. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
 
   ```sql
-  SELECT AVG(total)
+  EXPLAIN SELECT AVG(total)
   FROM pago
   WHERE YEAR(fecha_pago) = 2008;
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+  | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+  |  1 | SIMPLE      | pago  | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   26 |   100.00 | Using where |
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+ 
   ```
 
   ```sql
-  SELECT AVG(total)
+  EXPLAIN SELECT AVG(total)
   FROM pago
   WHERE fecha_pago >= '2008-01-01' AND fecha_pago <= '2008-12-31';
-  ```
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+  | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+  |  1 | SIMPLE      | pago  | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   26 |    11.11 | Using where |
+  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
 
-  >[Lectura recomendada sobre la función YEAR y el uso de índices](https://www.mysqltutorial.org/mysql-date-functions/mysql-year-function/)
+  ```
+#### La primera consulta es mas efficiente ya que su valor filtered es de 100% lo que significaba que es mas precisa 
+
 
 - Optimiza la siguiente consulta creando índices cuando sea necesario. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
 
