@@ -14,9 +14,9 @@
 |  1 | SIMPLE      | producto | NULL       | const | PRIMARY       | PRIMARY | 62      | const |    1 |   100.00 | NULL  |
 +----+-------------+----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
 
-  ````
+```
 
-  ```sql
+```sql
   EXPLAIN SELECT *
   FROM producto
   WHERE nombre = 'Evonimus Pulchellus';
@@ -25,8 +25,7 @@
 +----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 |  1 | SIMPLE      | producto | NULL       | ALL  | NULL          | NULL | NULL    | NULL |  276 |    10.00 | Using where |
 +----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
-
-  ```
+```
 #### La primera consulta recorrio una fila y la segunda consulta recorrio 276 filas.La rason por la que la primera tabla solo recorrio una fila es porque tiene el indice PRIMARY KEY.La rason por la que la segunda tabla recorrio todas la comlumnas es porque no tiene un indice como la primera consulta. 
 
   >Razona la respuesta, y analiza las diferencias.
