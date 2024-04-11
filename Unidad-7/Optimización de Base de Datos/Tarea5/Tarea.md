@@ -4,11 +4,11 @@
 - Consulte cuáles son los índices que hay en la tabla producto utilizando las instrucciones SQL que nos permiten obtener esta información de la tabla.
 - Haga uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas y diga cuál de las dos consultas realizará menos comparaciones para encontrar el producto que estamos buscando. ¿Cuántas comparaciones se realizan en cada caso? ¿Por qué?.
 
-  ```sql
+```sql
   EXPLAIN SELECT *
   FROM producto
   WHERE codigo_producto = 'OR-114';
-  +----+-------------+----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
++----+-------------+----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
 | id | select_type | table    | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
 +----+-------------+----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
 |  1 | SIMPLE      | producto | NULL       | const | PRIMARY       | PRIMARY | 62      | const |    1 |   100.00 | NULL  |
