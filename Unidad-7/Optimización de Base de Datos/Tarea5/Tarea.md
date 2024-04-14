@@ -58,10 +58,26 @@
 - Optimiza la siguiente consulta creando índices cuando sea necesario. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
 
   ```sql
-  SELECT *
+  EXPLAIN SELECT *
   FROM cliente INNER JOIN pedido
   ON cliente.codigo_cliente = pedido.codigo_cliente
   WHERE cliente.nombre_cliente LIKE 'A%';
+  +----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
+  | id | select_type | table   | partitions | type | possible_keys  | key            | key_len | ref                               | rows | filtered | Extra       |
+  +----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
+  |  1 | SIMPLE      | cliente | NULL       | ALL  | PRIMARY        | NULL           | NULL    | NULL                              |   36 |    11.11 | Using where |
+  |  1 | SIMPLE      | pedido  | NULL       | ref  | codigo_cliente | codigo_cliente | 4       | jardineria.cliente.codigo_cliente |    1 |   100.00 | NULL        |
+  +----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
+  ```
+  ```sql
+  CREATE INDEX index_nombre_cliente ON cliente (nombre_cliente);
+  +----+-------------+---------+------------+-------+------------------------------+----------------------+---------+-----------------------------------+------+----------+-----------------------+
+  | id | select_type | table   | partitions | type  | possible_keys                | key                  | key_len | ref                               | rows | filtered | Extra                 |
+  +----+-------------+---------+------------+-------+------------------------------+----------------------+---------+-----------------------------------+------+----------+-----------------------+
+  |  1 | SIMPLE      | cliente | NULL       | range | PRIMARY,index_nombre_cliente | index_nombre_cliente | 202     | NULL                              |    3 |   100.00 | Using index condition |
+  |  1 | SIMPLE      | pedido  | NULL       | ref   | codigo_cliente               | codigo_cliente       | 4       | jardineria.cliente.codigo_cliente |    6 |   100.00 | NULL                  |
+  +----+-------------+---------+------------+-------+------------------------------+----------------------+---------+-----------------------------------+------+----------+-----------------------+
+
   ```
 
 - ¿Por qué no es posible optimizar el tiempo de ejecución de las siguientes consultas, incluso haciendo uso de índices?
@@ -79,25 +95,77 @@
   ```
 
 - Crea un índice de tipo FULLTEXT sobre las columnas nombre y descripcion de la tabla producto.
+```sql
+CREATE FULLTEXT INDEX index_nombre_descripcion ON producto(nombre, descripcion);
+```
 - Una vez creado el índice del ejercicio anterior realiza las siguientes consultas haciendo uso de la función MATCH, para buscar todos los productos que:
+
   - Contienen la palabra planta en el nombre o en la descripción. - Realice una consulta para cada uno de los modos de búsqueda full-text que existen en MySQL (IN NATURAL LANGUAGE MODE, IN BOOLEAN MODE y WITH QUERY EXPANSION) y compare los resultados que ha obtenido en cada caso.
+```sql
+SELECT *
+FROM producto
+WHERE MATCH(nombre, descripcion) AGAINST('planta' IN NATURAL LANGUAGE MODE);
++-----------------+-----------------------------------+-------------+-------------+-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+------------------+
+| codigo_producto | nombre                            | gama        | dimensiones | proveedor             | descripcion                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | cantidad_en_stock | precio_venta | precio_proveedor |
++-----------------+-----------------------------------+-------------+-------------+-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+------------------+
+| AR-004          | Melissa                           | Aromáticas  | 15-20       | Murcia Seasons        | Es una planta perenne (dura varios años) conocida por el agradable y característico olor a limón que desprenden en verano. Nunca debe faltar en la huerta o jardín por su agradable aroma y por los variados usos que tiene: planta olorosa, condimentaria y medicinal. Su cultivo es muy fácil. Le va bien un suelo ligero, con buen drenaje y riego sin exceso. A pleno sol o por lo menos 5 horas de sol por día. Cada año, su abonado mineral correspondiente.En otoño, la melisa pierde el agradable olor a limón que desprende en verano sus flores azules y blancas. En este momento se debe cortar a unos 20 cm. del suelo. Brotará de forma densa en primavera.                                                                                                                                                                                                                                                                                                                                                                                         |               140 |         1.00 |             0.00 |
+| AR-001          | Ajedrea                           | Aromáticas  | 15-20       | Murcia Seasons        | Planta aromática que fresca se utiliza para condimentar carnes y ensaladas, y seca, para pastas, sopas y guisantes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |               140 |         1.00 |             0.00 |
+| AR-008          | Thymus Citriodra (Tomillo limón)  | Aromáticas  | 15-20       | Murcia Seasons        | Nombre común o vulgar: Tomillo, Tremoncillo Familia: Labiatae (Labiadas).Origen: Región mediterránea.Arbustillo bajo, de 15 a 40 cm de altura. Las hojas son muy pequeñas, de unos 6 mm de longitud; según la variedad pueden ser verdes, verdes grisáceas, amarillas, o jaspeadas. Las flores aparecen de mediados de primavera hasta bien entrada la época estival y se presentan en racimos terminales que habitualmente son de color violeta o púrpura aunque también pueden ser blancas. Esta planta despide un intenso y típico aroma, que se incrementa con el roce. El tomillo resulta de gran belleza cuando está en flor. El tomillo atrae a avispas y abejas. En jardinería se usa como manchas, para hacer borduras, para aromatizar el ambiente, llenar huecos, cubrir rocas, para jardines en miniatura, etc. Arranque las flores y hojas secas del tallo y añadálos a un popurri, introdúzcalos en saquitos de hierbas o en la almohada.También puede usar las ramas secas con flores para añadir aroma y textura a cestos abiertos.              |               140 |         1.00 |             0.00 |
+| AR-009          | Thymus Vulgaris                   | Aromáticas  | 15-20       | Murcia Seasons        | Nombre común o vulgar: Tomillo, Tremoncillo Familia: Labiatae (Labiadas). Origen: Región mediterránea. Arbustillo bajo, de 15 a 40 cm de altura. Las hojas son muy pequeñas, de unos 6 mm de longitud; según la variedad pueden ser verdes, verdes grisáceas, amarillas, o jaspeadas. Las flores aparecen de mediados de primavera hasta bien entrada la época estival y se presentan en racimos terminales que habitualmente son de color violeta o púrpura aunque también pueden ser blancas. Esta planta despide un intenso y típico aroma, que se incrementa con el roce. El tomillo resulta de gran belleza cuando está en flor. El tomillo atrae a avispas y abejas.
+ En jardinería se usa como manchas, para hacer borduras, para aromatizar el ambiente, llenar huecos, cubrir rocas, para jardines en miniatura, etc. Arranque las flores y hojas secas del tallo y añadálos a un popurri, introdúzcalos en saquitos de hierbas o en la almohada. También puede usar las ramas secas con flores para añadir aroma y textura a cestos abiertos.         |               140 |         1.00 |             0.00 |
+| FR-100          | Nectarina                         | Frutales    | 8/10        | Frutales Talavera S.A | Se trata de un árbol derivado por mutación de los melocotoneros comunes, y los únicos caracteres diferenciales son la ausencia de tomentosidad en la piel del fruto. La planta, si se deja crecer libremente, adopta un porte globoso con unas dimensiones medias de 4-6 metros                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                50 |        11.00 |             8.00 |
++-----------------+-----------------------------------+-------------+-------------+-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+------------------+
+
+```
+
+```sql
+SELECT *
+FROM producto
+WHERE MATCH(nombre, descripcion) AGAINST('planta' IN BOOLEAN MODE);
+
+```
+
+```sql
+SELECT *
+FROM producto
+WHERE MATCH(nombre, descripcion) AGAINST('planta' WITH QUERY EXPANSION);
+
+```
+
   - Contienen la palabra planta seguida de cualquier carácter o conjunto de caracteres, en el nombre o en la descripción.
+  
   - Empiezan con la palabra planta en el nombre o en la descripción.
+  
   - Contienen la palabra tronco o la palabra árbol en el nombre o en la descripción.
+  
   - Contienen la palabra tronco y la palabra árbol en el nombre o en la descripción.
+  
   - Contienen la palabra tronco pero no contienen la palabra árbol en el nombre o en la descripción.
+  
   - Contiene la frase proviene de las costas en el nombre o en la descripción.
+  
   - Crea un índice de tipo INDEX compuesto por las columnas apellido_contacto y nombre_contacto de la tabla cliente.
+  
   - Una vez creado el índice del ejercicio anterior realice las siguientes consultas haciendo uso de EXPLAIN:
+  
     - Busca el cliente Javier Villar. ¿Cuántas filas se han examinado hasta encontrar el resultado?
+  
     - Busca el cliente anterior utilizando solamente el apellido Villar.
+  
     - ¿Cuántas filas se han examinado hasta encontrar el resultado?
+  
     - Busca el cliente anterior utilizando solamente el nombre Javier. ¿Cuántas filas se han examinado hasta encontrar el resultado? ¿Qué ha ocurrido en este caso?
+  
   - Calcula cuál podría ser un buen valor para crear un índice sobre un prefijo de la columna nombre_cliente de la tabla cliente. Tenga en cuenta que un buen valor será aquel que nos permita utilizar el menor número de caracteres para diferenciar todos los valores que existen en la columna sobre la que estamos creando el índice.
+  
     - En primer lugar calculamos cuántos valores distintos existen en la columna nombre_cliente. Necesitarás utilizar la función COUNT y DISTINCT.
+  
     - Haciendo uso de la función LEFT ve calculando el número de caracteres que necesitas utilizar como prefijo para diferenciar todos los valores de la columna. Necesitarás la función COUNT, DISTINCT y LEFT.
+  
     - Una vez que hayas encontrado el valor adecuado para el prefijo, crea el índice sobre la columna nombre_cliente de la tabla cliente.
+  
     - Ejecuta algunas consultas de prueba sobre el índice que acabas de crear.
+
 
 ### Vistas
 
@@ -117,5 +185,3 @@
 
 - Elimine las vistas que ha creado en los pasos anteriores.
 
->__Nota__: ___Realiza cada una de las acciones e indica la salida de estas___.
-## Referencias
