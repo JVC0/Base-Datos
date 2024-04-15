@@ -523,8 +523,27 @@ GROUP BY c.codigo_cliente, p.codigo_pedido;
 ```
 
 - Utilice las vistas que ha creado en los pasos anteriores para devolver un listado de los clientes de la ciudad de Madrid que han realizado pagos.
-sele
+
+```sql
+select  nombre_completo from listado_pagos_clientes where ciudad="Madrid";
++---------------------+
+| nombre_completo     |
++---------------------+
+| Jose Bermejo        |
+| Guillermo Rengifo   |
+| Juan Rodriguez      |
+| Javier Villar       |
+| Javier Villar       |
+| Eva María Sánchez   |
+| Matías San Martín   |
++---------------------+
+
+```
 - Utilice las vistas que ha creado en los pasos anteriores para devolver un listado de los clientes que todavía no han recibido su pedido.
+
+```sql
+sele
+```
 
 - Utilice las vistas que ha creado en los pasos anteriores para calcular el número de pedidos que se ha realizado cada uno de los clientes.
 
