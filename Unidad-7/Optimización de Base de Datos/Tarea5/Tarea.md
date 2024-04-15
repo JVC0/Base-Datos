@@ -542,14 +542,116 @@ select  nombre_completo from listado_pagos_clientes where ciudad="Madrid";
 - Utilice las vistas que ha creado en los pasos anteriores para devolver un listado de los clientes que todavía no han recibido su pedido.
 
 ```sql
-sele
+SELECT * FROM cliente where codigo_cliente NOT IN (SELECT codigo_cliente FROM listado_pedidos_clientes);
+
++----------------+-----------------------------+-----------------+-------------------+----------------+----------------+--------------------------+------------------+----------------------+-----------+----------------+---------------+----------------------------+----------------+
+| codigo_cliente | nombre_cliente              | nombre_contacto | apellido_contacto | telefono       | fax            | linea_direccion1         | linea_direccion2 | ciudad               | region    | pais           | codigo_postal | codigo_empleado_rep_ventas | limite_credito |
++----------------+-----------------------------+-----------------+-------------------+----------------+----------------+--------------------------+------------------+----------------------+-----------+----------------+---------------+----------------------------+----------------+
+|              6 | Lasas S.A.                  | Antonio         | Lasas             | 34916540145    | 34914851312    | C/Leganes 15             | NULL             | Fuenlabrada          | Madrid    | Spain          | 28945         |                          8 |      154310.00 |
+|              8 | Club Golf Puerta del hierro | Paco            | Lopez             | 62456810       | 919535678      | C/sinesio delgado        | Madrid           | Madrid               | Madrid    | Spain          | 28930         |                         11 |       40000.00 |
+|             10 | DaraDistribuciones          | David           | Serrano           | 675598001      | 916421756      | C/azores                 | Fuenlabrada      | Madrid               | Madrid    | Spain          | 28946         |                         11 |       50000.00 |
+|             11 | Madrileña de riegos         | Jose            | Tacaño            | 655983045      | 916689215      | C/Lagañas                | Fuenlabrada      | Madrid               | Madrid    | Spain          | 28943         |                         11 |       20000.00 |
+|             12 | Lasas S.A.                  | Antonio         | Lasas             | 34916540145    | 34914851312    | C/Leganes 15             | NULL             | Fuenlabrada          | Madrid    | Spain          | 28945         |                          8 |      154310.00 |
+|             17 | Flowers, S.A                | Beatriz         | Fernandez         | 698754159      | 978453216      | C/Luis Salquillo4        | NULL             | Montornes del valles | Barcelona | Spain          | 24586         |                          5 |        3500.00 |
+|             18 | Naturajardin                | Victoria        | Cruz              | 612343529      | 916548735      | Plaza Magallón 15        | NULL             | Madrid               | Madrid    | Spain          | 28011         |                         30 |        5050.00 |
+|             20 | Americh Golf Management SL  | Mario           | Suarez            | 964493072      | 964493063      | C/Letardo                | NULL             | Barcelona            | Cataluña  | Spain          | 12320         |                         12 |       20000.00 |
+|             21 | Aloha                       | Cristian        | Rodrigez          | 916485852      | 914489898      | C/Roman 3                | NULL             | Canarias             | Canarias  | Spain          | 35488         |                         12 |       50000.00 |
+|             22 | El Prat                     | Francisco       | Camacho           | 916882323      | 916493211      | Avenida Tibidabo         | NULL             | Barcelona            | Cataluña  | Spain          | 12320         |                         12 |       30000.00 |
+|             24 | Vivero Humanes              | Federico        | Gomez             | 654987690      | 916040875      | C/Miguel Echegaray 54    | NULL             | Humanes              | Madrid    | Spain          | 28970         |                         30 |        7430.00 |
+|             25 | Fuenla City                 | Tony            | Muñoz Mena        | 675842139      | 915483754      | C/Callo 52               | NULL             | Fuenlabrada          | Madrid    | Spain          | 28574         |                          5 |        4500.00 |
+|             29 | Top Campo                   | Joseluis        | Sanchez           | 685746512      | 974315924      | C/Ibiza 32               | NULL             | Humanes              | Madrid    | Spain          | 28574         |                          5 |        5500.00 |
+|             31 | Campohermoso                | Luis            | Jimenez           | 645925376      | 916159116      | C/Peru 78                | NULL             | Fuenlabrada          | Madrid    | Spain          | 28945         |                         30 |        3250.00 |
+|             32 | france telecom              | FraÃ§ois        | Toulou            | (33)5120578961 | (33)5120578961 | 6 place d Alleray 15Ã¨me | NULL             | Paris                | NULL      | France         | 75010         |                         16 |       10000.00 |
+|             33 | Musée du Louvre             | Pierre          | Delacroux         | (33)0140205050 | (33)0140205442 | Quai du Louvre           | NULL             | Paris                | NULL      | France         | 75058         |                         16 |       30000.00 |
+|             37 | The Magic Garden            | Richard         | Mcain             | 926523468      | 9364875882     | Lihgting Park            | NULL             | London               | London    | United Kingdom | 65930         |                         18 |       10000.00 |
++----------------+-----------------------------+-----------------+-------------------+----------------+----------------+--------------------------+------------------+----------------------+-----------+----------------+---------------+----------------------------+----------------+
+
 ```
 
 - Utilice las vistas que ha creado en los pasos anteriores para calcular el número de pedidos que se ha realizado cada uno de los clientes.
 
+```sql
+SELECT codigo_cliente, nombre_completo, COUNT(*) from listado_pedidos_clientes group by codigo_cliente;
++----------------+-------------------+---------------------+
+| codigo_cliente | nombre_completo   |      COUNT(*)       |
++----------------+-------------------+---------------------+
+|              5 | Akane Tendo       |                   5 |
+|              1 | Daniel G GoldFish |                  11 |
+|              3 | Anne Wright       |                   9 |
+|              7 | Jose Bermejo      |                   5 |
+|              9 | Guillermo Rengifo |                   5 |
+|             14 | Juan Rodriguez    |                   5 |
+|             13 | Pedro Camunas     |                   5 |
+|              4 | Link Flaute       |                   5 |
+|             19 | Luis Martinez     |                   5 |
+|             23 | Maria Santillana  |                   5 |
+|             26 | Eva María Sánchez |                   5 |
+|             15 | Javier Villar     |                   5 |
+|             28 | Benito Lopez      |                   5 |
+|             35 | Jacob Jones       |                   5 |
+|             27 | Matías San Martín |                   5 |
+|             16 | Maria Rodriguez   |                  10 |
+|             30 | Sara Marquez      |                  10 |
+|             38 | Justin Smith      |                   5 |
+|             36 | Antonio Romero    |                   5 |
++----------------+-------------------+---------------------+
+```
 - Utilice las vistas que ha creado en los pasos anteriores para calcular el valor del pedido máximo y mínimo que ha realizado cada cliente.
+
+```sql
+SELECT codigo_cliente, nombre_completo, MAX(cantidad_total_pedido) AS max_valor_pedido, MIN(cantidad_total_pedido) AS min_valor_pedido from listado_pedidos_clientes group by codigo_cliente;
+
++----------------+-------------------+------------------+------------------+
+| codigo_cliente | nombre_completo   | max_valor_pedido | min_valor_pedido |
++----------------+-------------------+------------------+------------------+
+|              5 | Akane Tendo       |         10850.00 |          1567.00 |
+|              1 | Daniel G GoldFish |          2535.00 |           290.00 |
+|              3 | Anne Wright       |          4775.00 |           504.00 |
+|              7 | Jose Bermejo      |           829.00 |           214.00 |
+|              9 | Guillermo Rengifo |           333.00 |             6.00 |
+|             14 | Juan Rodriguez    |          1569.00 |           287.00 |
+|             13 | Pedro Camunas     |           773.00 |           141.00 |
+|              4 | Link Flaute       |         73226.00 |          1532.00 |
+|             19 | Luis Martinez     |           108.00 |             4.00 |
+|             23 | Maria Santillana  |           164.00 |             5.00 |
+|             26 | Eva María Sánchez |          7750.00 |           625.00 |
+|             15 | Javier Villar     |          4660.00 |           588.00 |
+|             28 | Benito Lopez      |          5773.00 |           120.00 |
+|             35 | Jacob Jones       |          1024.00 |           322.00 |
+|             27 | Matías San Martín |          5759.00 |            41.00 |
+|             16 | Maria Rodriguez   |          2070.00 |           209.00 |
+|             30 | Sara Marquez      |          3216.00 |           304.00 |
+|             38 | Justin Smith      |           553.00 |            51.00 |
+|             36 | Antonio Romero    |           700.00 |           700.00 |
++----------------+-------------------+------------------+------------------+
+```
 
 - Modifique el nombre de las vista listado_pagos_clientes y asígnele el nombre listado_de_pagos. Una vez que haya modificado el nombre de la vista ejecute una consulta utilizando el nuevo nombre de la vista para comprobar que sigue funcionando correctamente.
 
+```sql
+CREATE VIEW listado_de_pagos AS
+SELECT * FROM listado_pagos_clientes;
+DROP VIEW IF EXISTS listado_pagos_clientes;
++--------------------------+
+| Tables_in_jardineria     |
++--------------------------+
+| cliente                  |
+| detalle_pedido           |
+| empleado                 |
+| gama_producto            |
+| listado_pagos            |
+| listado_pedidos_clientes |
+| oficina                  |
+| pago                     |
+| pedido                   |
+| producto                 |
++--------------------------+
+
+
+```
 - Elimine las vistas que ha creado en los pasos anteriores.
 
+```sql
+DROP VIEW IF EXISTS listado_pagos;
+DROP VIEW IF EXISTS listado_pedidos_clientes;
+```
