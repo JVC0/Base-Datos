@@ -587,7 +587,12 @@ EXPLAIN SELECT * FROM cliente WHERE nombre_contacto = 'Javier';
     - En primer lugar calculamos cuántos valores distintos existen en la columna nombre_cliente. Necesitarás utilizar la función COUNT y DISTINCT.
 
 ```sql
-
+SELECT COUNT(DISTINCT nombre_cliente) AS num_valores_distintos FROM cliente;
++-----------------------+
+| num_valores_distintos |
++-----------------------+
+|                    35 |
++-----------------------+
 ```
     - Haciendo uso de la función LEFT ve calculando el número de caracteres que necesitas utilizar como prefijo para diferenciar todos los valores de la columna. Necesitarás la función COUNT, DISTINCT y LEFT.
 
