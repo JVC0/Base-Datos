@@ -58,26 +58,39 @@ DELIMITER ;
 
 ```sql
 DELIMITER //
-CREATE FUNCTION CalculateTotal(Productoid INT) RETURNS DECIMAL(10,2)
+CREATE FUNCTION SUMAR_TOTA() RETURNS FLOAT DETERMINISTIC
 BEGIN
-    DECLARE TotalPrice DECIMAL(10,2);
-    SELECT SUM(Price) INTO TotalPrice FROM Products WHERE ProductoID = Productoid;
-    RETURN TotalPrice;
+DECLARE resultado FLOAT;
+SELECT sum(Price) as total from Products into resultado;
+RETURN resultado;
 END;
 //
-DELIMITER ; 
+DELIMITER ;
+SELECT SUMAR_TOTA();
++--------------+
+| SUMAR_TOTA() |
++--------------+
+|       532.99 |
++--------------+
+
 ```
 ### Función para contar el número de usuarios.
-
-```sql
-CREATE FUNCTION ClienteTotal() RETURNS DECIMAL(10,2)
-BEGIN
-    DECLARE TotalPrice DECIMAL(10,2);
-    SELECT Count() INTO TotalPrice FROM Products WHERE ProductoID = Productoid;
-    RETURN TotalPrice;
-END;
-```
 ### Nota: Realiza la invocación y la verificación de que ha funcionado correctamente.
-
 ```sql
+DELIMITER //
+CREATE FUNCTION CONTAR_TOTA() RETURNS INTEGER DETERMINISTIC
+BEGIN
+DECLARE resultado INT;
+SELECT sum(ProductID) as total from Products into resultado;
+RETURN resultado;
+END;
+//
+DELIMITER ;
+select CONTAR_TOTA();
++---------------+
+| CONTAR_TOTA() |
++---------------+
+|            21 |
++---------------+
+
 ```
