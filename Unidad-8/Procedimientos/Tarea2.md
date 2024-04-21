@@ -8,19 +8,17 @@
 ### Parámetros de salida: El precio total del pedido (FLOAT)
 
 ```sql
-DELIMITER //
 DROP FUNCTION IF EXISTS calcular_precio_total_pedido;
+DELIMITER //
 CREATE FUNCTION calcular_precio_total_pedido(codigo_pedidos INT) 
 RETURNS FLOAT DETERMINISTIC
 BEGIN
     DECLARE total_pedido FLOAT;
 
-    SELECT sum((precio_venta*dp.cantidad))
+    SELECT sum((precio_unidad*cantidad))
     INTO total_pedido
-    FROM pedido AS pe
-    JOIN detalle_pedido AS dp ON dp.codigo_pedido = pe.codigo_pedido
-    JOIN producto as po on po.codigo_producto=dp.codigo_producto
-    WHERE pe.codigo_pedido = codigo_pedidos;
+    FROM detalle_pedido
+    WHERE codigo_pedido = codigo_pedido;
 
     RETURN total_pedido;
 END;
@@ -31,22 +29,78 @@ SELECT calcular_precio_total_pedido(1);
 +---------------------------------+
 | calcular_precio_total_pedido(1) |
 +---------------------------------+
-|                            1687 |
+|                          217738 |
 +---------------------------------+
+
 ```
 
 
 ### Función calcular_suma_pedidos_cliente
 ### Nota:Dado un código de cliente la función debe calcular la suma total de todos los pedidos realizados por el cliente. Deberá hacer uso de la función calcular_precio_total_pedido que ha desarrollado en el apartado anterior.
+### Parámetros de entrada: codigo_cliente (INT)
+### Parámetros de salida: La suma total de todos los pedidos del cliente (FLOAT)
 
-Parámetros de entrada: codigo_cliente (INT)
-Parámetros de salida: La suma total de todos los pedidos del cliente (FLOAT)
-Función calcular_suma_pagos_cliente
+```sql
+DELIMITER //
+DROP FUNCTION IF EXISTS calcular_suma_pedidos_cliente;
+CREATE FUNCTION calcular_suma_pedidos_cliente(codigo_clientes INT) 
+RETURNS FLOAT DETERMINISTIC
+BEGIN
+    DECLARE total_cliente FLOAT;
+    SELECT count(codigo_cliente)
+    INTO total_cliente
+    from pedido
+    WHERE codigo_cliente=codigo_clientes;
 
-Nota:Dado un código de cliente la función debe calcular la suma total de los pagos realizados por ese cliente.
+    RETURN total_cliente;
+END;
+//
+DELIMITER ;
 
-Parámetros de entrada: codigo_cliente (INT)
-Parámetros de salida: La suma total de todos los pagos del cliente (FLOAT)
+SELECT calcular_suma_pedidos_cliente(1);
++----------------------------------+
+| calcular_suma_pedidos_cliente(1) |
++----------------------------------+
+|                               11 |
++----------------------------------+
+
+```
+
+
+### Función calcular_suma_pagos_cliente
+
+### Nota:Dado un código de cliente la función debe calcular la suma total de los pagos realizados por ese cliente.
+### Parámetros de entrada: codigo_cliente (INT)
+### Parámetros de salida: La suma total de todos los pagos del cliente (FLOAT)
+
+```sql
+
+DROP FUNCTION IF EXISTS calcular_suma_pagos_cliente;
+DELIMITER //
+CREATE FUNCTION calcular_suma_pagos_cliente(codigo_clientes INT) 
+RETURNS FLOAT DETERMINISTIC
+BEGIN
+    DECLARE total_cliente FLOAT;
+    SELECT sum(total)
+    INTO total_cliente
+    from pago
+    WHERE codigo_cliente=codigo_clientes;
+
+    RETURN total_cliente;
+END;
+//
+DELIMITER ;
+
+SELECT calcular_suma_pagos_cliente(1);
+
++--------------------------------+
+| calcular_suma_pagos_cliente(1) |
++--------------------------------+
+|                           4000 |
++--------------------------------+
+
+```
+
 Procedimiento calcular_pagos_pendientes
 
 Nota:Deberá calcular los pagos pendientes de todos los clientes. Para saber si un cliente tiene algún pago pendiente deberemos calcular cuál es la cantidad de todos los pedidos y los pagos que ha realizado. Si la cantidad de los pedidos es mayor que la de los pagos entonces ese cliente tiene pagos pendientes.
