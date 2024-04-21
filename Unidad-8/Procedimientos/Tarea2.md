@@ -9,32 +9,35 @@
 
 ```sql
 DELIMITER //
-CREATE FUNCTION calcular_precio_total_pedido(codigo_pedidos INT ) 
+DROP FUNCTION IF EXISTS calcular_precio_total_pedido;
+CREATE FUNCTION calcular_precio_total_pedido(codigo_pedidos INT) 
 RETURNS FLOAT DETERMINISTIC
 BEGIN
-DECLARE resultado FLOAT;
-DECLARE cantidad FLOAT;
+    DECLARE total_pedido FLOAT;
 
-SELECT pa.total as total from pago as pa 
-join cliente as c on pa.codigo_cliente=c.codigo_cliente 
-join pedido as pe on pe.codigo_cliente=c.codigo_cliente 
-where pe.codigo_pedido=codigo_pedidos into resultado;
+    SELECT sum((precio_venta*dp.cantidad))
+    INTO total_pedido
+    FROM pedido AS pe
+    JOIN detalle_pedido AS dp ON dp.codigo_pedido = pe.codigo_pedido
+    JOIN producto as po on po.codigo_producto=dp.codigo_producto
+    WHERE pe.codigo_pedido = codigo_pedidos;
 
-SELECT cantidad from pago as pa 
-join cliente as c on pa.codigo_cliente=c.codigo_cliente 
-join pedido as pe on pe.codigo_cliente=c.codigo_cliente 
-join detalle_pedido as dp on dp.codigo_pedido=pe.codigo_pedido
-where pe.codigo_pedido=codigo_pedidos into cantidad;
-RETURN sum(resultado*cantidad);
+    RETURN total_pedido;
 END;
 //
 DELIMITER ;
+
+SELECT calcular_precio_total_pedido(1);
++---------------------------------+
+| calcular_precio_total_pedido(1) |
++---------------------------------+
+|                            1687 |
++---------------------------------+
 ```
-SELECT calcular_precio_total_pedido(100);
 
-Función calcular_suma_pedidos_cliente
 
-Nota:Dado un código de cliente la función debe calcular la suma total de todos los pedidos realizados por el cliente. Deberá hacer uso de la función calcular_precio_total_pedido que ha desarrollado en el apartado anterior.
+### Función calcular_suma_pedidos_cliente
+### Nota:Dado un código de cliente la función debe calcular la suma total de todos los pedidos realizados por el cliente. Deberá hacer uso de la función calcular_precio_total_pedido que ha desarrollado en el apartado anterior.
 
 Parámetros de entrada: codigo_cliente (INT)
 Parámetros de salida: La suma total de todos los pedidos del cliente (FLOAT)
