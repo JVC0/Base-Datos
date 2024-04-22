@@ -98,9 +98,37 @@ SELECT calcular_suma_pagos_cliente(1);
 +--------------------------------+
 |                           4000 |
 +--------------------------------+
-
+     
 ```
 
 Procedimiento calcular_pagos_pendientes
 
 Nota:Deberá calcular los pagos pendientes de todos los clientes. Para saber si un cliente tiene algún pago pendiente deberemos calcular cuál es la cantidad de todos los pedidos y los pagos que ha realizado. Si la cantidad de los pedidos es mayor que la de los pagos entonces ese cliente tiene pagos pendientes.
+
+```sql
+DELIMITER //
+CREATE FUNCTION calcular_pagos_pendientes(codigo_clientes INT)
+RETURNS VARCHAR(100) DETERMINISTIC
+BEGIN
+    DECLARE numero_pedidos INT;
+    DECLARE total_cliente INT;
+    DECLARE mensaje VARCHAR(100);
+
+    SELECT COUNT(codigo_cliente) INTO numero_pedidos
+    FROM pedido
+    WHERE codigo_cliente = codigo_clientes;
+
+    SELECT COUNT(total) INTO total_cliente
+    FROM pago
+    WHERE codigo_cliente = codigo_clientes;
+
+    IF total_cliente < numero_pedidos THEN
+        SET mensaje = CONCAT('Faltan ', numero_pedidos - total_cliente, ' pagos');
+    ELSE
+        SET mensaje = 'No faltan pagos';
+    END IF;
+
+    RETURN mensaje;
+END//
+DELIMITER ;
+```
