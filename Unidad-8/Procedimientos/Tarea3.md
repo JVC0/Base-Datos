@@ -22,6 +22,18 @@
       CLOSE cur;
   END //
   DELIMITER ;
+
+
+call aumentar_salarios();
+mysql> select * from empleados;
++----+--------+---------+
+| id | nombre | salario |
++----+--------+---------+
+|  1 | Juan   | 3150.00 |
+|  2 | María  | 3500.00 |
+|  3 | Pedro  | 3200.00 |
++----+--------+---------+
+
 ```
 
 ### Escribe un procedimiento almacenado que calcule el salario anual de cada empleado (asumiendo que trabajan todo el año) y lo imprima.
@@ -48,6 +60,29 @@
       CLOSE cur;
   END //
   DELIMITER ;
+
+  call salarios_anuales();
++----+--------+------------+
+| id | nombre | salario*12 |
++----+--------+------------+
+|  1 | Juan   |   37800.00 |
++----+--------+------------+
+1 row in set (0,00 sec)
+
++----+--------+------------+
+| id | nombre | salario*12 |
++----+--------+------------+
+|  2 | María  |   42000.00 |
++----+--------+------------+
+1 row in set (0,00 sec)
+
++----+--------+------------+
+| id | nombre | salario*12 |
++----+--------+------------+
+|  3 | Pedro  |   38400.00 |
++----+--------+------------+
+1 row in set (0,00 sec)
+
 ```
 
 
