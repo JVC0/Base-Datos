@@ -17,7 +17,7 @@
           IF done THEN
               LEAVE read_loop;
           END IF;
-          UPDATE empleados SET salario = salario * (1 + 5 / 100) WHERE id = emp_id and  emp_salario>3200 ;
+          UPDATE empleados SET salario = salario * (1 + 5 / 100) WHERE id = emp_id and  salario<3200 ;
       END LOOP;
       CLOSE cur;
   END //
