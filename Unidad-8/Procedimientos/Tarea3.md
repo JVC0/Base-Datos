@@ -27,9 +27,11 @@
 ### Escribe un procedimiento almacenado que calcule el salario anual de cada empleado (asumiendo que trabajan todo el año) y lo imprima.
 
 ```sql
-DELIMITER //
-  CREATE PROCEDURE salario_por_anyo()
+  DELIMITER //
+  CREATE PROCEDURE salarios_anuales()
   BEGIN
+      DECLARE done INT DEFAULT FALSE;
+      DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
       DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
@@ -41,7 +43,7 @@ DELIMITER //
           IF done THEN
               LEAVE read_loop;
           END IF;
-          UPDATE empleados SET salario = salario * 12 WHERE id = emp_id;
+          select id,nombre,salario*12 from empleados WHERE id = emp_id;
       END LOOP;
       CLOSE cur;
   END //
