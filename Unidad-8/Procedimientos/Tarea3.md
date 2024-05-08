@@ -107,10 +107,21 @@ DELIMITER //
           IF done THEN
               LEAVE read_loop;
           END IF;
-          UPDATE empleados SET salario = salario * (1 + 5 / 100) WHERE id = emp_id and  salario<3200 ;
+          select * from empleados WHERE id = emp_id and salario BETWEEN minimo and maximo;
       END LOOP;
       CLOSE cur;
   END //
   DELIMITER ;
+
+
+  call aumentar_rango(3400,3700);
+Empty set (0,00 sec)
+
++----+--------+---------+
+| id | nombre | salario |
++----+--------+---------+
+|  2 | María  | 3500.00 |
++----+--------+---------+
+
 ```
 
