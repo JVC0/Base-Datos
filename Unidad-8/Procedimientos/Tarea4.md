@@ -68,7 +68,7 @@ DELIMITER //
       DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
-      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados where id Between minimo and maximo;
       DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
       OPEN cur;
@@ -77,7 +77,7 @@ DELIMITER //
           IF done THEN
               LEAVE read_loop;
           END IF;
-          SELECT * FROM empleados where id Between minimo and maximo;
+          SELECT * FROM empleados ;
       END LOOP;
       CLOSE cur;
   END //
