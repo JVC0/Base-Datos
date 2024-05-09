@@ -11,7 +11,7 @@ BEGIN
     DECLARE emp_id INT;
     DECLARE emp_nombre VARCHAR(100);
     DECLARE emp_salario DECIMAL(10, 2);
-    DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+    DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados Where valor<emp_salario;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     CREATE TABLE empleados_destiono (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -24,7 +24,6 @@ BEGIN
         IF done THEN
             LEAVE read_loop;
         END IF;
-        IF valor<emp_salario THEN
           INSERT INTO empleados_destiono (nombre, salario) VALUES (emp_nombre,emp_salario);
       END IF;
     END LOOP;
@@ -43,7 +42,7 @@ DELIMITER ;
       DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
-      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados WHERE emp_nombre REGEXP '[aA]';
       DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
       OPEN cur;
@@ -52,7 +51,7 @@ DELIMITER ;
           IF done THEN
               LEAVE read_loop;
           END IF;
-          UPDATE empleados SET salario = salario * (1 + porcentaje / 100) WHERE id = emp_id and emp_nombre REGEXP '[aA]' ;
+          UPDATE empleados SET salario = salario * (1 + porcentaje / 100) WHERE id = emp_id;
       END LOOP;
       CLOSE cur;
   END //
