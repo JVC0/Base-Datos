@@ -93,10 +93,9 @@ DELIMITER //
   CREATE PROCEDURE dropmm(IN minimo INT,IN maximo INT)
   BEGIN
       DECLARE done INT DEFAULT FALSE;
-      DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
-      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados where salario Between minimo and maximo;
       DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
       OPEN cur;
@@ -105,7 +104,7 @@ DELIMITER //
           IF done THEN
               LEAVE read_loop;
           END IF;
-          DELETE FROM empleados where salario Between minimo and maximo;
+          DELETE FROM empleados ;
       END LOOP;
       CLOSE cur;
   END //
@@ -123,7 +122,7 @@ DELIMITER //
       DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
-      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados WHERE id = emp_id and emp_nombre=emp_nombre ;
       DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
       OPEN cur;
@@ -132,7 +131,7 @@ DELIMITER //
           IF done THEN
               LEAVE read_loop;
           END IF;
-          UPDATE empleados SET salario = salario * (1 + 20 / 100) WHERE id = emp_id and emp_nombre=emp_nombre ;
+          UPDATE empleados SET salario = salario * (1 + 20 / 100);
       END LOOP;
       CLOSE cur;
   END //
