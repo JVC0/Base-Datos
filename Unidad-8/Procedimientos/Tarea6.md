@@ -10,12 +10,11 @@ Teniendo en cuenta esta información se pide:
 ### Crea una base datos llamada salario.
 
 ```sql
-Create dsa
+Create database salario;
 ```
 
-Crear BBDD en MySql.
-Crea una tabla llamada persona con los siguientes campos:
-
+### Crear BBDD en MySql.
+### Crea una tabla llamada persona con los siguientes campos:
 Identificador. (Texto)(PK).
 Nombre (Texto).
 Salario_base. (Escoge el tipo de dato).
@@ -24,7 +23,21 @@ Salud(Escoge el tipo de dato).
 Pensión(Escoge el tipo de dato).
 Bono(Escoge el tipo de dato).
 Integral(Escoge el tipo de dato).
-Creación de un procedimiento de forma aleatoria con las siguientes características:
+
+```sql
+CREATE TABLE persona (
+    Identificador varchar(20) PRIMARY KEY,
+    Nombre varchar(255),
+    Salario_base varchar(255),
+    Salud varchar(255),
+    Pension varchar(255),
+    Bono varchar(255),
+    Integral varchar(255)
+);
+```
+
+
+### Creación de un procedimiento de forma aleatoria con las siguientes características:
 
 Parámetro de entrada el número de registros (Mínimo 10, y realiza la prueba varias veces).
 Cree una función para cada punto teniendo en cuenta que:
