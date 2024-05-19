@@ -26,13 +26,14 @@ Integral(Escoge el tipo de dato).
 
 ```sql
 CREATE TABLE persona (
-    Identificador varchar(20) PRIMARY KEY,
-    Nombre varchar(255),
-    Salario_base varchar(255),
-    Salud varchar(255),
-    Pension varchar(255),
-    Bono varchar(255),
-    Integral varchar(255)
+    Identificador varchar(100) PRIMARY KEY,
+    Nombre varchar(20),
+    salario_base DECIMAL(10, 2),
+    subsidio DECIMAL(10, 2),
+    salud DECIMAL(10, 2),
+    pension DECIMAL(10, 2),
+    bono DECIMAL(10, 2),
+    integral DECIMAL(10, 2)
 );
 ```
 
@@ -43,9 +44,15 @@ Parámetro de entrada el número de registros (Mínimo 10, y realiza la prueba v
 Cree una función para cada punto teniendo en cuenta que:
 
 Función subsidio_transporte: El subsidio de transporte equivale al 7% al salario básico. Actualiza el valor en la tabla.
+
 Función salud: La salud que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
+
 Función pension: La pensión que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
+
 Función bono: Un bono que corresponde al 8% al salario básico. Actualiza el valor en la tabla.
+
 Función integral: El salario integral es la suma del salario básico - salud - pension + bono + sub de transporte. Actualiza el valor en la tabla.
+
 Crea cada uno de las funciones anteriores para una persona en específico.
+
 El parámetro de entrada debe de ser un identificar de la persona.
