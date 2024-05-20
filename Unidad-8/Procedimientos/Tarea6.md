@@ -47,14 +47,62 @@ Cree una función para cada punto teniendo en cuenta que:
 
 Función subsidio_transporte: El subsidio de transporte equivale al 7% al salario básico. Actualiza el valor en la tabla.
 
+```sql
+DROP PROCEDURE IF EXISTS subsidio_transporte;
+DELIMITER //
+CREATE PROCEDURE subsidio_transporte(salario DECIMAL(10, 2))
+BEGIN
+    DECLARE Total DECIMAL;
+    SET Total= salario* 0.07
+RETURN Total;
+END//
+```
+
 Función salud: La salud que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
 
+```sql
+DROP PROCEDURE IF EXISTS pension;
+DELIMITER //
+CREATE PROCEDURE salud(salario DECIMAL(10, 2))
+BEGIN
+    DECLARE Total DECIMAL;
+    SET Total= salario* 0.04
+RETURN Total;
+END//
+```
 Función pension: La pensión que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
-
+```sql
+DROP PROCEDURE IF EXISTS pension;
+DELIMITER //
+CREATE PROCEDURE pension(salario DECIMAL(10, 2))
+BEGIN
+    DECLARE Total DECIMAL;
+    SET Total= salario* 0.04
+RETURN Total;
+END//
+```
 Función bono: Un bono que corresponde al 8% al salario básico. Actualiza el valor en la tabla.
-
+```sql
+DROP PROCEDURE IF EXISTS bono;
+DELIMITER //
+CREATE PROCEDURE bono(salario DECIMAL(10, 2))
+BEGIN
+    DECLARE Total DECIMAL;
+    SET Total= salario* 0.08
+RETURN Total;
+END//
+```
 Función integral: El salario integral es la suma del salario básico - salud - pension + bono + sub de transporte. Actualiza el valor en la tabla.
-
+```sql
+DROP PROCEDURE IF EXISTS pension;
+DELIMITER //
+CREATE PROCEDURE pension(salario DECIMAL(10, 2))
+BEGIN
+    DECLARE Total DECIMAL;
+    SET Total= g_integral = g_salario - g_salud - g_pension + g_bono + g_subsidio;
+RETURN Total;
+END//
+```
 Crea cada uno de las funciones anteriores para una persona en específico.
 
 El parámetro de entrada debe de ser un identificar de la persona.
