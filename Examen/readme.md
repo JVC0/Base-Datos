@@ -2482,3 +2482,33 @@ mysql> select * from persona;
 
 - Verifica que los datos se inserten, actualicen y eliminen correctamente en las tablas correspondientes.
 - Mantén la integridad de los datos en todas las operaciones.
+
+# ALTER TABLE
+
+Adding a Column: To add a new column to an existing table, you can use the following syntax:
+SQL
+
+ALTER TABLE table_name ADD column_name datatype;
+ More info on FAQ.For instance, if you want to add an “Email” column to the “Customers” table:
+SQL
+
+ALTER TABLE Customers ADD Email varchar(255);
+
+Dropping a Column: To delete a column from a table, use the following syntax (note that some database systems don’t allow deleting a column):
+SQL
+
+ALTER TABLE table_name DROP COLUMN column_name;
+For example, to remove the “Email” column from the “Customers” table:
+SQL
+
+ALTER TABLE Customers DROP COLUMN Email;
+
+Modifying a Column’s Data Type: To change the data type of an existing column, use the following syntax:
+SQL
+
+ALTER TABLE table_name MODIFY COLUMN column_name datatype;
+Suppose you want to change the data type of the “DateOfBirth” column in the “Persons” table:
+SQL
+
+ALTER TABLE Persons MODIFY COLUMN DateOfBirth date;
+The “Persons” table will now include the new “DateOfBirth” column with a date data type
