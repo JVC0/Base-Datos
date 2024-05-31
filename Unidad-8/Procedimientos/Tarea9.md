@@ -32,7 +32,7 @@ for each row
 Create table log_cambios_email(
     id INT PRIMARY KEY,
     id_alumno INT,
-    fecha_hora TIMESTAMP,
+    fecha_hora DATETIME,
     old_email VARCHAR(50),
     new_email VARCHAR(50)
 );
